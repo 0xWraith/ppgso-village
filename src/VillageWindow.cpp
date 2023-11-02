@@ -5,7 +5,7 @@ class VillageWindow : public ppgso::Window {
 private:
 
 public:
-    VillageWindow() : Window{"Dmytro Dzhuha | Marek Hužvár | Village", 1920, 1010} {
+    VillageWindow() : Window{"Dmytro Dzhuha | Marek Hužvár | Village", 1, 1} {
         hideCursor();
         glfwSetInputMode(window, GLFW_STICKY_KEYS, 1);
 

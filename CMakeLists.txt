@@ -99,7 +99,10 @@ target_include_directories(ppgso PUBLIC
 #
 add_executable(Village
         src/VillageWindow.cpp
+        src/camera/camera.cpp
+        src/scene/scene.cpp
         src/
+        src/object/object.cpp
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)
