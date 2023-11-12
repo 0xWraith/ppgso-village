@@ -9,12 +9,22 @@
 #include "src/object/object.h"
 #include <vector>
 #include <list>
+#include <map>
 
 class Scene {
-private:
+public:
+
+    bool DAY_TIME = true;
+    bool GLOBAL_LIGHTING_ON = true;
+    glm::vec3 LIGHT_DIRECTION = {0.25 , 1, 0.5};
+
+    constexpr static const float CAMERA_SPEED = 15.0f;
     std::list<std::unique_ptr<Object>> objects;
     std::unique_ptr<Camera> camera;
+    std::map<int, int> keyboard;
+
 public:
+    void init();
     void render();
     void update(float time);
 };

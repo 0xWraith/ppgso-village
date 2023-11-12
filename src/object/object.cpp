@@ -1,4 +1,3 @@
-#define GLM_ENABLE_EXPERIMENTAL
 #include "object.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

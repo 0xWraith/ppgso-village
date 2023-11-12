@@ -63,7 +63,12 @@ endif ()
 #
 
 set(PPGSO_SHADER_SRC
+        shader/color_vert.glsl shader/color_frag.glsl
+        shader/convolution_vert.glsl shader/convolution_frag.glsl
+        shader/diffuse_vert.glsl shader/diffuse_frag.glsl
+        shader/texture_vert.glsl shader/texture_frag.glsl
         shader/ambient_frag.glsl
+        shader/phong_frag.glsl shader/phong_vert.glsl
 )
 add_resources(shaders ${PPGSO_SHADER_SRC})
 
@@ -77,7 +82,7 @@ add_library(ppgso STATIC
         ppgso/image_raw.cpp
         ppgso/texture.cpp
         ppgso/window.cpp
-        )
+)
 
 # Make sure GLM uses radians and GLEW is a static library
 target_compile_definitions(ppgso PUBLIC -DGLM_FORCE_RADIANS -DGLEW_STATIC)
@@ -101,8 +106,19 @@ add_executable(Village
         src/VillageWindow.cpp
         src/camera/camera.cpp
         src/scene/scene.cpp
-        src/
         src/object/object.cpp
+        src/object/house/house.cpp
+        src/object/grass/grass.cpp
+        src/object/grass/grass.cpp
+        src/object/bucket/bucket.cpp
+        src/object/cat/cat.cpp
+        src/object/dog/dog.cpp
+        src/object/fish/fish.cpp
+        src/object/garden/garden.cpp
+        src/object/grandpa/grandpa.cpp
+        src/object/grandma/grandma.cpp
+        src/object/tree/tree.cpp
+        src/
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)
