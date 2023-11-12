@@ -6,7 +6,7 @@
 #include "src/object/garden/garden.h"
 #include "src/object/grandma/grandma.h"
 #include "src/object/grandpa/grandpa.h"
-#include "src/object/grass/grass.h"
+#include "src/object/terrain/terrain.h"
 #include "src/object/house/house.h"
 #include "src/object/tree/tree.h"
 
@@ -69,8 +69,13 @@ void Scene::init() {
     this->camera = std::make_unique<Camera>();
     printSceneInitProgress(++progress, maxProgress);
 
-    auto grass = std::make_unique<Grass>("models/MountainTerrain.obj", "textures/mountain1.bmp");
+    auto grass = std::make_unique<Terrain>("models/grass.obj", "textures/grass.bmp");
+    grass->rotation = {3*ppgso::PI/2, 0, 0};
     objects.push_back(std::move(grass));
+    printSceneInitProgress(++progress, maxProgress);
+
+    auto mountain = std::make_unique<Terrain>("models/MountainTerrain.obj", "textures/mountain1.bmp");
+    objects.push_back(std::move(mountain));
     printSceneInitProgress(++progress, maxProgress);
 
     auto house = std::make_unique<House>("models/house.obj", "textures/house.bmp");

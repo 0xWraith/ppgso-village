@@ -1,8 +1,8 @@
-#include "grass.h"
+#include "terrain.h"
 #include "shaders/texture_frag_glsl.h"
 #include <shaders/texture_vert_glsl.h>
 
-Grass::Grass(const std::string model, const std::string texture) {
+Terrain::Terrain(const std::string model, const std::string texture) {
     position = {0, 0, 0};
     rotation = {0, 0, 0};
     scale = {1.1, 1.1, 1.1};
@@ -18,12 +18,12 @@ Grass::Grass(const std::string model, const std::string texture) {
     }
 }
 
-bool Grass::update(Scene &scene, float dt) {
+bool Terrain::update(Scene &scene, float dt) {
     generateModelMatrix();
     return true;
 }
 
-void Grass::render(Scene &scene) {
+void Terrain::render(Scene &scene) {
     auto camera = *scene.camera;
 
     shader->use();

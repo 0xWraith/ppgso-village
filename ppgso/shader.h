@@ -110,7 +110,7 @@ namespace ppgso {
      */
     void setUniform(const std::string &name, glm::mat3 matrix) const;
 
-  private:
+  public:
     GLuint program;
   };
 

@@ -69,6 +69,7 @@ set(PPGSO_SHADER_SRC
         shader/texture_vert.glsl shader/texture_frag.glsl
         shader/ambient_frag.glsl
         shader/phong_frag.glsl shader/phong_vert.glsl
+        shader/skybox_frag.glsl shader/skybox_vert.glsl
 )
 add_resources(shaders ${PPGSO_SHADER_SRC})
 
@@ -92,6 +93,7 @@ target_link_libraries(ppgso PUBLIC ${GLFW_LIBRARIES} ${GLEW_LIBRARIES} ${OPENGL_
 # Pass on include directories
 target_include_directories(ppgso PUBLIC
         ppgso
+        dependencies/include/stb
         ${GLFW_INCLUDE_DIRS}
         ${GLEW_INCLUDE_DIRS}
         ${GLM_INCLUDE_DIRS}
@@ -108,8 +110,8 @@ add_executable(Village
         src/scene/scene.cpp
         src/object/object.cpp
         src/object/house/house.cpp
-        src/object/grass/grass.cpp
-        src/object/grass/grass.cpp
+        src/object/terrain/terrain.cpp
+        src/object/terrain/terrain.cpp
         src/object/bucket/bucket.cpp
         src/object/cat/cat.cpp
         src/object/dog/dog.cpp
