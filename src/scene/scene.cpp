@@ -74,9 +74,9 @@ void Scene::init() {
     objects.push_back(std::move(grass));
     printSceneInitProgress(++progress, maxProgress);
 
-    auto mountain = std::make_unique<Terrain>("models/MountainTerrain.obj", "textures/mountain1.bmp");
-    objects.push_back(std::move(mountain));
-    printSceneInitProgress(++progress, maxProgress);
+//    auto mountain = std::make_unique<Terrain>("models/MountainTerrain.obj", "textures/mountain1.bmp");
+//    objects.push_back(std::move(mountain));
+//    printSceneInitProgress(++progress, maxProgress);
 
     auto house = std::make_unique<House>("models/house.obj", "textures/house.bmp");
     objects.push_back(std::move(house));

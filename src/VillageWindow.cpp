@@ -163,8 +163,8 @@ public:
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
         std::string skyBoxTextures[6] = {
-                "textures/skybox/graycloud_rt.jpg",
                 "textures/skybox/graycloud_lf.jpg",
+                "textures/skybox/graycloud_rt.jpg",
                 "textures/skybox/graycloud_up.jpg",
                 "textures/skybox/graycloud_dn.jpg",
                 "textures/skybox/graycloud_ft.jpg",
@@ -207,7 +207,6 @@ public:
 
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        // These are very important to prevent seams
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
@@ -218,13 +217,6 @@ public:
         glUniform1i(glGetUniformLocation(skyboxShader->program, "skybox"), 0);
 
         glEnable(GL_DEPTH_TEST);
-
-        // Enables Cull Facing
-//        glEnable(GL_CULL_FACE);
-        // Keeps front faces
-//        glCullFace(GL_FRONT);
-        // Uses counter clock-wise standard
-//        glFrontFace(GL_CCW);
 
         lastTime = (float) glfwGetTime();
         scene.init();
@@ -257,11 +249,11 @@ public:
         glm::mat4 view = glm::mat4(1.0f);
         glm::mat4 projection = glm::mat4(1.0f);
         view = glm::mat4(glm::mat3(scene.camera->viewMatrix));
-        glUniformMatrix4fv(glGetUniformLocation(skyboxShader->program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+//        glUniformMatrix4fv(glGetUniformLocation(skyboxShader->program, "view"), 1, GL_FALSE, glm::value_ptr(view));
         glUniformMatrix4fv(glGetUniformLocation(skyboxShader->program, "projection"), 1, GL_FALSE, glm::value_ptr(scene.camera->projectionMatrix));
         glUniform3fv(glGetUniformLocation(skyboxShader->program, "model"), 1, glm::value_ptr(glm::mat4(1.0f)));
 
-//        skyboxShader->setUniform("view", view);
+        skyboxShader->setUniform("view", view);
 //        skyboxShader->setUniform("projection", projection);
 
 
