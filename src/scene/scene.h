@@ -14,7 +14,7 @@
 class Scene {
 public:
 
-    bool DAY_TIME = false;
+    bool DAY_TIME = true;
     bool GLOBAL_LIGHTING_ON = true;
     glm::vec3 LIGHT_DIRECTION = {0.25 , 1, 0.5};
 

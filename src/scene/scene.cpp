@@ -17,7 +17,6 @@
 void printSceneInitProgress(int progress, int max);
 
 float cubeVertices[] = {
-        // positions          // texture Coords
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
@@ -146,15 +145,10 @@ void Scene::update(float time) {
     glDepthFunc(GL_LEQUAL);
 
     skyboxShader->use();
-    glm::mat4 view = glm::mat4(1.0f);
-    glm::mat4 projection = glm::mat4(1.0f);
-    view = glm::mat4(glm::mat3(camera->viewMatrix));
-//        glUniformMatrix4fv(glGetUniformLocation(skyboxShader->program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-    glUniformMatrix4fv(glGetUniformLocation(skyboxShader->program, "projection"), 1, GL_FALSE, glm::value_ptr(camera->projectionMatrix));
-    glUniform3fv(glGetUniformLocation(skyboxShader->program, "model"), 1, glm::value_ptr(glm::mat4(1.0f)));
 
-    skyboxShader->setUniform("view", view);
-//        skyboxShader->setUniform("projection", projection);
+    skyboxShader->setUniform("view", glm::mat4(glm::mat3(camera->viewMatrix)));
+    skyboxShader->setUniform("projection", camera->projectionMatrix);
+    skyboxShader->setUniform("model", glm::mat4(1.0f));
 
 
     glBindVertexArray(skyboxVAO);
@@ -175,7 +169,7 @@ void Scene::render() {
 
 void Scene::init() {
     int progress = 0;
-    const int maxProgress = 6;
+    const int maxProgress = 26;
 
     generateSkybox();
     printSceneInitProgress(++progress, maxProgress);
@@ -186,7 +180,7 @@ void Scene::init() {
     camera = std::make_unique<Camera>();
     printSceneInitProgress(++progress, maxProgress);
 
-    auto grass = std::make_unique<Terrain>("models/grass.obj", "textures/grass.bmp");
+    auto grass = std::make_unique<Terrain>("models/grass.obj", "textures/water.bmp");
     grass->rotation = {3*ppgso::PI/2, 0, 0};
     grass->scale = {0.5, 0.5, 0.5};
     objects.push_back(std::move(grass));
@@ -203,7 +197,7 @@ void Scene::init() {
         auto gate_second_row = std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp");
         gate_second_row->rotation = {3 * ppgso::PI / 2, 0, 0};
         gate_second_row->scale = {0.1, 0.1, 0.1};
-        gate_second_row->position = {-58.0 + (i * 27.6), 3.5, 70.0};
+        gate_second_row->position = {-58.0 + (i * 27.6), 3.5, 68.5};
         objects.push_back(std::move(gate_second_row));
         printSceneInitProgress(++progress, maxProgress);
 
@@ -217,15 +211,29 @@ void Scene::init() {
         auto gate_fourth_row = std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp");
         gate_fourth_row->rotation = {3 * ppgso::PI / 2, 0.0, ppgso::PI / 2};
         gate_fourth_row->scale = {0.1, 0.1, 0.1};
-        gate_fourth_row->position = {72, 3.5, -56.0 + (i * 27.6)};
+        gate_fourth_row->position = {66, 3.5, -56.0 + (i * 27.6)};
         objects.push_back(std::move(gate_fourth_row));
         printSceneInitProgress(++progress, maxProgress);
     }
 
     auto house = std::make_unique<House>("models/house.obj", "textures/house.bmp");
     house->rotation = {0, 0, 0};
+    house->position = {-43.1071, 3.80, -20.6743};
     objects.push_back(std::move(house));
     printSceneInitProgress(++progress, maxProgress);
+
+    auto dog = std::make_unique<Dog>("models/dog.obj", "textures/dog.bmp");
+    dog->position = {-20, 10, 0};
+    dog->scale = {0.1, 0.1, 0.1};
+    objects.push_back(std::move(dog));
+    printSceneInitProgress(++progress, maxProgress);
+
+
+    auto cat = std::make_unique<Cat>("models/cat.obj", "textures/cat.bmp");
+    cat->position = {-15, 10, 0};
+    objects.push_back(std::move(cat));
+    printSceneInitProgress(++progress, maxProgress);
+
 
     std::cout << "Scene init done" << std::endl;
 }
