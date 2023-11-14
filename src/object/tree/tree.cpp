@@ -34,7 +34,14 @@ void Tree::render(Scene &scene) {
     shader->setUniform("CamPos", camera.position);
 
     shader->setUniform("ModelMatrix", modelMatrix);
-    shader->setUniform("Texture", *texture, 0);
+
+    auto begin = textures.begin();
+    auto end = textures.end();
+
+    int i = 0;
+    for (auto it = begin; it != end; ++it, i++) {
+        shader->setUniform("Texture", **it, i);
+    }
 
     mesh->render();
 }

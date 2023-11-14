@@ -14,7 +14,7 @@
 class Scene {
 public:
 
-    bool DAY_TIME = true;
+    bool DAY_TIME = false;
     bool GLOBAL_LIGHTING_ON = true;
     glm::vec3 LIGHT_DIRECTION = {0.25 , 1, 0.5};
 
@@ -22,6 +22,13 @@ public:
     std::list<std::unique_ptr<Object>> objects;
     std::unique_ptr<Camera> camera;
     std::map<int, int> keyboard;
+    unsigned int skyboxVAO, skyboxVBO;
+    unsigned int cubeVAO, cubeVBO;
+    std::unique_ptr<ppgso::Shader> skyboxShader;
+    unsigned int cubemapTexture;
+
+private:
+    void generateSkybox();
 
 public:
     void init();

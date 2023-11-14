@@ -2,17 +2,21 @@
 #include "shaders/texture_frag_glsl.h"
 #include <shaders/texture_vert_glsl.h>
 
-Terrain::Terrain(const std::string model, const std::string texture) {
+Terrain::Terrain(const std::string model, const std::string texture) : Terrain(model) {
+    if (!this->texture) {
+        this->texture = std::make_unique<ppgso::Texture>(ppgso::image::loadBMP(texture));
+    }
+}
+
+Terrain::Terrain(const std::string model) {
     position = {0, 0, 0};
     rotation = {0, 0, 0};
-    scale = {1.1, 1.1, 1.1};
+    scale = {1, 1, 1};
 
     if (!shader) {
         shader = std::make_unique<ppgso::Shader>(texture_vert_glsl, texture_frag_glsl);
     }
-    if (!this->texture) {
-        this->texture = std::make_unique<ppgso::Texture>(ppgso::image::loadBMP(texture));
-    }
+
     if (!mesh) {
         mesh = std::make_unique<ppgso::Mesh>(model);
     }
@@ -34,7 +38,10 @@ void Terrain::render(Scene &scene) {
     shader->setUniform("CamPos", camera.position);
 
     shader->setUniform("ModelMatrix", modelMatrix);
-    shader->setUniform("Texture", *texture, 0);
+
+    if (texture) {
+        shader->setUniform("Texture", *texture, 0);
+    }
 
     mesh->render();
 }
