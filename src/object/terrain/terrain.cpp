@@ -2,6 +2,8 @@
 #include "shaders/texture_frag_glsl.h"
 #include <shaders/texture_vert_glsl.h>
 
+#include <cmath>
+
 Terrain::Terrain(const std::string model, const std::string texture) : Terrain(model) {
     if (!this->texture) {
         this->texture = std::make_unique<ppgso::Texture>(ppgso::image::loadBMP(texture));
@@ -23,6 +25,20 @@ Terrain::Terrain(const std::string model) {
 }
 
 bool Terrain::update(Scene &scene, float dt) {
+
+    if (type == WATER) {
+        animationTime += dt;
+
+        if (animationTime > 1000 * M_PI) {
+            animationTime = 0;
+        }
+
+        auto waterLevel = -45.0f + std::sin(animationTime) * 2.0f;
+        auto waterRotation = std::sin(animationTime) * 0.1f;
+        position.y = waterLevel;
+        rotation.z = glm::radians(waterRotation);
+    }
+
     generateModelMatrix();
     return true;
 }

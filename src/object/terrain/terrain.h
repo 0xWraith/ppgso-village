@@ -11,7 +11,15 @@
 #include "src/object/object.h"
 
 class Terrain final : public Object {
+
+
 public:
+    enum TERRAIN_TYPE {
+        DEFAULT,
+        WATER
+    };
+    float animationTime = 0;
+    TERRAIN_TYPE type = DEFAULT;
     Terrain(const std::string model, const std::string texture);
     Terrain(const std::string model);
     bool update(Scene &scene, float dt) override;

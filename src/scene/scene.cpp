@@ -180,10 +180,80 @@ void Scene::init() {
     camera = std::make_unique<Camera>();
     printSceneInitProgress(++progress, maxProgress);
 
-    auto grass = std::make_unique<Terrain>("models/grass.obj", "textures/water.bmp");
+    auto grass = std::make_unique<Terrain>("models/grass.obj", "textures/grass.bmp");
     grass->rotation = {3*ppgso::PI/2, 0, 0};
     grass->scale = {0.5, 0.5, 0.5};
     objects.push_back(std::move(grass));
+    printSceneInitProgress(++progress, maxProgress);
+
+    auto sand = std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp");
+    sand->rotation = {3*ppgso::PI/2, 0, 0};
+    sand->scale = {0.5, 0.1, 0.5};
+    sand->position = {0.0, -0.5, 90.0};
+    objects.push_back(std::move(sand));
+    printSceneInitProgress(++progress, maxProgress);
+
+
+    auto depthSand1 = std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp");
+    auto depthSand2 = std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp");
+    auto depthSand3 = std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp");
+    auto depthSand4 = std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp");
+    auto depthSand5 = std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp");
+    auto depthSand6 = std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp");
+    auto depthSand7 = std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp");
+    auto depthSand8 = std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp");
+    auto water = std::make_unique<Terrain>("models/grass.obj", "textures/water.bmp");
+    water->type = Terrain::TERRAIN_TYPE::WATER;
+
+
+    depthSand1->rotation = {glm::radians(315.0), 0, 0};
+    water->rotation = {3*ppgso::PI/2, 0, 0};
+    depthSand8->rotation = {glm::radians(315.0), 0, glm::radians(180.0)};
+
+
+    depthSand2->rotation = {glm::radians(315.0), 0.0, glm::radians(45.0)};
+    depthSand4->rotation = {glm::radians(315.0), 0, glm::radians(90.0)};
+    depthSand6->rotation = {glm::radians(315.0), 0.0, glm::radians(135.0)};
+
+    depthSand3->rotation = {glm::radians(315.0), 0, glm::radians(-45.0)};
+    depthSand5->rotation = {glm::radians(315.0), 0, glm::radians(-90.0)};
+    depthSand7->rotation = {glm::radians(315.0), 0, glm::radians(-135.0)};
+
+
+    depthSand1->scale =
+    depthSand2->scale =
+    depthSand3->scale =
+    depthSand4->scale =
+    depthSand5->scale =
+    depthSand6->scale =
+    depthSand7->scale =
+    depthSand8->scale = {0.5, 0.3, 0.5};
+    water->scale = {1, 1, 1};
+
+    depthSand1->position = {0.0, -31.0, 133.0};
+    depthSand8->position = {0.0, -31.0, 390.5 + 21.0};
+
+    depthSand2->position = {-100.0, -31.0, 140.5 + 21.0};
+    depthSand4->position = {-145, -31.0, 245.5 + 21.0};
+    depthSand6->position = {-100, -31.0, 350.5 + 21.0};
+
+
+    depthSand3->position = {100.0, -31.0, 140.5 + 21.0};
+    depthSand5->position = {145, -31.0, 245.5 + 21.0};
+    depthSand7->position = {100, -31.0, 350.5 + 21.0};
+
+    water->position = {0.0, -45, 250};
+
+
+    objects.push_back(std::move(depthSand1));
+    objects.push_back(std::move(depthSand2));
+    objects.push_back(std::move(depthSand3));
+    objects.push_back(std::move(depthSand4));
+    objects.push_back(std::move(depthSand5));
+    objects.push_back(std::move(depthSand6));
+    objects.push_back(std::move(depthSand7));
+    objects.push_back(std::move(depthSand8));
+    objects.push_back(std::move(water));
     printSceneInitProgress(++progress, maxProgress);
 
     for(int i = 0; i < 5; i++) {
@@ -192,13 +262,6 @@ void Scene::init() {
         gate_first_row->scale = {0.1, 0.1, 0.1};
         gate_first_row->position = {-58.0 + (i * 27.6), 3.5, -70.0};
         objects.push_back(std::move(gate_first_row));
-        printSceneInitProgress(++progress, maxProgress);
-
-        auto gate_second_row = std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp");
-        gate_second_row->rotation = {3 * ppgso::PI / 2, 0, 0};
-        gate_second_row->scale = {0.1, 0.1, 0.1};
-        gate_second_row->position = {-58.0 + (i * 27.6), 3.5, 68.5};
-        objects.push_back(std::move(gate_second_row));
         printSceneInitProgress(++progress, maxProgress);
 
         auto gate_third_row = std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp");
@@ -233,7 +296,6 @@ void Scene::init() {
     cat->position = {-15, 10, 0};
     objects.push_back(std::move(cat));
     printSceneInitProgress(++progress, maxProgress);
-
 
     std::cout << "Scene init done" << std::endl;
 }
