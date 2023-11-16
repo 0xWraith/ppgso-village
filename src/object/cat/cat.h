@@ -9,6 +9,8 @@
 class Cat final : public Object {
 public:
     std::unique_ptr<ppgso::Texture> shadow_map;
+    float animationTime = 0;
+    int animationStep = 0;
 public:
     Cat(const std::string model, const std::string texture);
     bool update(Scene &scene, float dt) override;

@@ -22,6 +22,66 @@ Cat::Cat(const std::string model, const std::string texture) {
 }
 
 bool Cat::update(Scene &scene, float dt) {
+
+    //Move cat forward depending on angle
+
+    float speed = 0.8f;
+    animationTime += dt;
+
+    switch (animationStep) {
+        case 0: {
+            if (animationTime > 1.0f) {
+                rotation.x = glm::radians(225.0);
+                position.y += (speed - 0.2f) * dt;
+            }
+            if (animationTime >= 6) {
+                animationStep = 1;
+                animationTime = 0;
+            }
+            position.x += std::cos(rotation.y) * speed * dt;
+            position.z += std::sin(rotation.y) * speed * dt;
+            break;
+        }
+        case 1: {
+            if (rotation.z <= glm::radians(-90.0)) {
+                animationStep = 2;
+                animationTime = 0;
+            }
+            else {
+                if (rotation.x < glm::radians(315.0)) {
+                    rotation.x += glm::radians(225.0 * dt * 1);
+                }
+                rotation.z -= glm::radians(90.0 * dt * 5);
+            }
+            break;
+        }
+        case 2: {
+            if (animationTime > 4.0f) {
+                rotation.x = glm::radians(295.0);
+                position.y -= (speed - 0.5f) * dt;
+            } else {
+                position.y -= (speed - 0.2f) * dt;
+            }
+
+            if (animationTime >= 7) {
+                animationStep = 3;
+                animationTime = 0;
+            }
+
+            position.x -= std::cos(rotation.y) * speed * dt;
+            position.z -= std::sin(rotation.y) * speed * dt;
+            break;
+        }
+        case 3: {
+            position = {45.5, 25.5, -49.7439};
+            rotation.x = glm::radians(245.0);
+            rotation.z = glm::radians(90.0);
+            animationStep = 0;
+            animationTime = -0.5f;
+            break;
+        }
+    }
+
     generateModelMatrix();
     return true;
 }

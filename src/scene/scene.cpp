@@ -256,7 +256,7 @@ void Scene::init() {
     objects.push_back(std::move(water));
     printSceneInitProgress(++progress, maxProgress);
 
-    for(int i = 0; i < 5; i++) {
+    for(int i = 0; i < 0; i++) {
         auto gate_first_row = std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp");
         gate_first_row->rotation = {3 * ppgso::PI / 2, 0, 0};
         gate_first_row->scale = {0.1, 0.1, 0.1};
@@ -285,15 +285,21 @@ void Scene::init() {
     objects.push_back(std::move(house));
     printSceneInitProgress(++progress, maxProgress);
 
+    auto tree = std::make_unique<Terrain>("models/tree.obj", "textures/tree.bmp");
+    tree->rotation = {0, 0, 0};
+    tree->position = {40.0, 3.5, -50.0};
+    tree->scale = {3, 4.0, 3};
+    objects.push_back(std::move(tree));
+    printSceneInitProgress(++progress, maxProgress);
+
     auto dog = std::make_unique<Dog>("models/dog.obj", "textures/dog.bmp");
     dog->position = {-20, 10, 0};
-    dog->scale = {0.1, 0.1, 0.1};
     objects.push_back(std::move(dog));
     printSceneInitProgress(++progress, maxProgress);
 
-
     auto cat = std::make_unique<Cat>("models/cat.obj", "textures/cat.bmp");
-    cat->position = {-15, 10, 0};
+    cat->position = {45.5, 25.0, -49.7439};
+    cat->rotation = {glm::radians(245.0), 0, glm::radians(90.0)};
     objects.push_back(std::move(cat));
     printSceneInitProgress(++progress, maxProgress);
 

@@ -24,9 +24,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/textures/water.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/data/textures/water.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/terrain/terrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/terrain/terrain.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/terrain/terrain.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/terrain/terrain.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/models/tree1.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/textures/SandG_001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/textures/mountain1.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/textures/tree1.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/textures/tree2.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/cat/cat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/cat/cat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/cat/cat.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/cat/cat.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,11 +79,6 @@
   }
 }</component>
   <component name="RunManager" selected="CMake Application.Village">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Village" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ppgso" TARGET_NAME="Village" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ppgso" RUN_TARGET_NAME="Village">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -110,6 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1699974352121</updated>
       <workItem from="1699974353184" duration="3489000" />
+      <workItem from="1700094102382" duration="2073000" />
     </task>
     <servers />
   </component>
