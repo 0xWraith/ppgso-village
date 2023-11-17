@@ -10,10 +10,14 @@ treeStruct::treeStruct(std::string id, std::unique_ptr<Object> obj, glm::vec3 po
 treeStruct::treeStruct(std::string id, std::unique_ptr<Object> obj, glm::vec3 pos, glm::vec3 scale) : treeStruct(id, std::move(obj)) {
     this->obj->position = pos;
     this->obj->scale = scale;
+    this->obj->rotation = {0,0,0};
 }
 
-treeStruct::treeStruct(std::string id, std::unique_ptr<Object> obj) {
+treeStruct::treeStruct(std::string id, std::unique_ptr<Object> obj): treeStruct(id) {
     this->obj = std::move(obj);
+}
+
+treeStruct::treeStruct(std::string id) {
     this->id = id;
 }
 
@@ -27,14 +31,15 @@ void treeStruct::addObject(std::string parent_id, std::shared_ptr<treeStruct> ne
 }
 
 void treeStruct::update(Scene &scene, float dt) {
-    if(parent) {
-        this->obj->parentModelMatrix = this->parent->obj->modelMatrix;
-    }
-    else {
-        this->obj->parentModelMatrix = glm::mat4 {1};
+    if(obj) {
+        if (parent && parent->obj) {
+            this->obj->parentModelMatrix = this->parent->obj->modelMatrix;
+        } else {
+            this->obj->parentModelMatrix = glm::mat4{1};
+        }
     }
 
-    if(!obj->update(scene, dt)) {
+    if(obj && !(obj->update(scene, dt))) {
         if(right) {
             right->left = NULL;
         }
@@ -49,16 +54,18 @@ void treeStruct::update(Scene &scene, float dt) {
         }
     }
 
-    if(child != NULL) {
+    if(child) {
         child->update(scene, dt);
     }
-    if(right != NULL) {
+    if(right) {
         right->update(scene,dt);
     }
 }
 
 void treeStruct::render(Scene &scene) {
-    obj->render(scene);
+    if(obj) {
+        obj->render(scene);
+    }
 
     if(child != NULL) {
         child->render(scene);

@@ -121,6 +121,7 @@ add_executable(Village
         src/object/grandma/grandma.cpp
         src/object/tree/tree.cpp
         src/
+        src/object/treeStruct.cpp
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)

@@ -73,7 +73,7 @@ bool Cat::update(Scene &scene, float dt) {
             break;
         }
         case 3: {
-            position = {45.5, 25.5, -49.7439};
+            //position = {45.5, 25.5, -49.7439};
             rotation.x = glm::radians(245.0);
             rotation.z = glm::radians(90.0);
             animationStep = 0;

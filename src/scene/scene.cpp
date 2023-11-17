@@ -13,6 +13,7 @@
 #include "src/object/terrain/terrain.h"
 #include "src/object/house/house.h"
 #include "src/object/tree/tree.h"
+#include "src/object/treeStruct.h"
 
 void printSceneInitProgress(int progress, int max);
 
@@ -104,7 +105,7 @@ float skyboxVertices[] = {
 };
 
 void Scene::update(float time) {
-    auto i = std::begin(objects);
+    /*auto i = std::begin(objects);
     while (i != std::end(objects)) {
         Object* obj = i->get();
         if (obj->update(*this, time)) {
@@ -112,7 +113,8 @@ void Scene::update(float time) {
         } else {
             i = objects.erase(i);
         }
-    }
+    }*/
+    sceneStructure->update(*this, time);
 
     float speed = time * CAMERA_SPEED;
 
@@ -162,8 +164,13 @@ void Scene::update(float time) {
 }
 
 void Scene::render() {
+    /*
     for (auto& obj: objects) {
         obj->render(*this);
+    }
+     */
+    if(sceneStructure) {
+        sceneStructure->render(*this);
     }
 }
 
@@ -180,6 +187,40 @@ void Scene::init() {
     camera = std::make_unique<Camera>();
     printSceneInitProgress(++progress, maxProgress);
 
+    sceneStructure = std::make_shared<treeStruct>("scene1");
+    printSceneInitProgress(++progress, maxProgress);
+
+    std::shared_ptr<treeStruct> grass = std::make_shared<treeStruct>("grass", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/grass.bmp")),
+                                                  glm::vec3 {0,0,0}, glm::vec3 {3*ppgso::PI/2, 0, 0}, glm::vec3 {0.5, 0.5, 0.5});
+    sceneStructure->addChild(grass);
+    printSceneInitProgress(++progress, maxProgress);
+
+    std::shared_ptr<treeStruct> house = std::make_shared<treeStruct>("house", std::move(std::make_unique<House>("models/house.obj", "textures/house.bmp")),
+                                                                     glm::vec3 {-43.1071, 3.80, -20.6743}, glm::vec3 {0 , 0, 0}, glm::vec3 {1,1,1});
+    sceneStructure->addChild(house);
+    printSceneInitProgress(++progress, maxProgress);
+
+    std::shared_ptr<treeStruct> tree = std::make_shared<treeStruct>("tree", std::move(std::make_unique<Terrain>("models/tree.obj", "textures/tree.bmp")),
+                                                                    glm::vec3 {40.0, 3.5, -50.0}, glm::vec3 {3, 4.0, 3});
+    sceneStructure->addChild(tree);
+    printSceneInitProgress(++progress, maxProgress);
+
+    std::shared_ptr<treeStruct> cat = std::make_shared<treeStruct>("cat", std::move(std::make_unique<Cat>("models/cat.obj", "textures/cat.bmp")),
+                                                                  glm::vec3 {45.5, 25.0, -49.7439}, glm::vec3 {glm::radians(245.0), 0, glm::radians(90.0)},
+                                                                  glm::vec3 {0.1, 0.1, 0.1});
+
+    sceneStructure->addChild(cat);
+    printSceneInitProgress(++progress, maxProgress);
+
+    std::shared_ptr<treeStruct> cat2 = std::make_shared<treeStruct>("cat2", std::move(std::make_unique<Cat>("models/cat.obj", "textures/cat.bmp")),
+                                                                   glm::vec3 {1.65,4.9,0.1}, glm::vec3 {glm::radians(245.0), 0, glm::radians(90.0)},
+                                                                   glm::vec3 {0.03, 0.03, 0.03});
+
+    tree->addChild(cat2);
+    printSceneInitProgress(++progress, maxProgress);
+
+
+    /*
     auto grass = std::make_unique<Terrain>("models/grass.obj", "textures/grass.bmp");
     grass->rotation = {3*ppgso::PI/2, 0, 0};
     grass->scale = {0.5, 0.5, 0.5};
@@ -302,6 +343,7 @@ void Scene::init() {
     cat->rotation = {glm::radians(245.0), 0, glm::radians(90.0)};
     objects.push_back(std::move(cat));
     printSceneInitProgress(++progress, maxProgress);
+    */
 
     std::cout << "Scene init done" << std::endl;
 }

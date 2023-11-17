@@ -5,6 +5,7 @@
 #ifndef PPGSO_SCENE_H
 #define PPGSO_SCENE_H
 
+#include "src/object/treeStruct.h"
 #include "src/camera/camera.h"
 #include "src/object/object.h"
 #include <vector>
@@ -20,6 +21,7 @@ public:
 
     constexpr static const float CAMERA_SPEED = 15.0f;
     std::list<std::unique_ptr<Object>> objects;
+    std::shared_ptr<treeStruct> sceneStructure;
     std::unique_ptr<Camera> camera;
     std::map<int, int> keyboard;
     unsigned int skyboxVAO, skyboxVBO;

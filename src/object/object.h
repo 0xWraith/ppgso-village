@@ -12,6 +12,7 @@ public:
     glm::vec3 rotation;
     glm::vec3 scale;
     glm::mat4 modelMatrix;
+    glm::mat4 parentModelMatrix;
     std::unique_ptr<ppgso::Mesh> mesh;
     std::unique_ptr<ppgso::Shader> shader;
     std::unique_ptr<ppgso::Texture> texture;
