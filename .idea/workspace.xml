@@ -23,14 +23,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/models/bubble.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/models/bucket.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/camera/cinematic/keyframe.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/camera/cinematic/keyframe.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/fish/fishSpawner.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/fish/fishSpawner.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/particles/bubble.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/particles/bubble.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/bezier/bezier.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/bezier/bezier.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/utils.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/utils.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera/camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/camera.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/object/cat/cat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/cat/cat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/object.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/object.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/object.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/object.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/treeStruct.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/treeStruct.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/treeStruct.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/treeStruct.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/dog/dog.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/dog/dog.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/dog/dog.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/dog/dog.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/fish/fish.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/fish/fish.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/fish/fish.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/fish/fish.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.h" afterDir="false" />
     </list>
@@ -71,7 +85,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "dev",
-    "last_opened_file_path": "C:/Users/marek/Desktop/fiit stuba/5. semester/PPGSO/projekt/github/ppgso-vilage2/ppgso-village/src/object",
+    "last_opened_file_path": "D:/Projects/ppgso-village/data/models",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,16 +95,20 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\ppgso-village\data\models" />
       <recent name="C:\Users\marek\Desktop\fiit stuba\5. semester\PPGSO\projekt\github\ppgso-vilage2\ppgso-village\src\object" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\ppgso-village\src" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.Village">
-    <configuration name="Village" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ppgso" TARGET_NAME="Village" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ppgso" RUN_TARGET_NAME="Village">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Village" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ppgso" TARGET_NAME="Village" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ppgso" RUN_TARGET_NAME="Village">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -136,16 +154,5 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticFoundErrors value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/object/treeStruct.cpp</url>
-          <line>32</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

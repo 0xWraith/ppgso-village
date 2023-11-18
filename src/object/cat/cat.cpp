@@ -23,8 +23,6 @@ Cat::Cat(const std::string model, const std::string texture) {
 
 bool Cat::update(Scene &scene, float dt) {
 
-    //Move cat forward depending on angle
-
     float speed = 0.8f;
     animationTime += dt;
 
@@ -76,9 +74,15 @@ bool Cat::update(Scene &scene, float dt) {
             //position = {45.5, 25.5, -49.7439};
             rotation.x = glm::radians(245.0);
             rotation.z = glm::radians(90.0);
-            animationStep = 0;
+            animationStep = 4;
             animationTime = -0.5f;
             break;
+        }
+        case 4: {
+            if (animationTime >= 7) {
+                animationStep = 0;
+                animationTime = -0.5f;
+            }
         }
     }
 

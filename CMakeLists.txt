@@ -120,8 +120,16 @@ add_executable(Village
         src/object/grandpa/grandpa.cpp
         src/object/grandma/grandma.cpp
         src/object/tree/tree.cpp
-        src/
         src/object/treeStruct.cpp
+        src/object/fish/fishSpawner.cpp
+        src/utils/bezier/bezier.cpp
+        src/
+        src/camera/cinematic/keyframe.cpp
+        src/camera/cinematic/cinematic.cpp
+        src/object/particles/bubble.cpp
+        src/object/particles/bubble.h
+        src/utils/utils.cpp
+        src/utils/utils.h
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)

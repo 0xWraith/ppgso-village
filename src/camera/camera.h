@@ -27,7 +27,7 @@ public:
 
     float fov = 90.0f, ratio = 1.0f, near = 0.0001f, far = 10000.0f;
 
-    explicit Camera(float fov = 90.0f, float ratio = 1.0f, float near = 0.0001f, float far = 10000.0f);
+    explicit Camera(float fov = 90.0f, float ratio = 1.0, float near = 0.0001f, float far = 10000.0f);
 
     glm::mat4 recalculateProjectionMatrix(float fow, float ratio, float near, float far);
 
