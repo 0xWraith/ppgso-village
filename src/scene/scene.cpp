@@ -18,6 +18,8 @@
 
 void printSceneInitProgress(int progress, int max);
 
+float camPosX, camPosY, camPosZ;
+
 float cubeVertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -141,8 +143,11 @@ void Scene::update(float time) {
     if(keyboard[GLFW_KEY_LEFT_SHIFT]) {
         camera->position -= camera->cameraUp * speed;
     }
-    if (keyboard[GLFW_KEY_0]) {
-        std::cout << "Camera position: " << camera->position.x << ", " << camera->position.y << ", " << camera->position.z << std::endl;
+    if (keyboard[GLFW_KEY_0] && (camPosX != camera->position.x && camPosY != camera->position.y && camPosZ != camera->position.z)) {
+        camPosX = camera->position.x;
+        camPosY = camera->position.y;
+        camPosZ = camera->position.z;
+        std::cout << "glm::vec3(" << camera->position.x << ", " << camera->position.y << ", " << camera->position.z << ")," << std::endl;
     }
     if (keyboard[GLFW_KEY_9]) {
 
@@ -267,7 +272,7 @@ void Scene::init() {
     sceneStructure->addChild(water);
 
     std::shared_ptr<treeStruct> dog = std::make_shared<treeStruct>("dog", std::move(std::make_unique<Dog>("models/dog.obj", "textures/dog.bmp")),
-                                                                   glm::vec3 {-20, 10, 0}, glm::vec3 {glm::radians(270.0), 0, 0}, glm::vec3 {0.1, 0.1, 0.1});
+                                                                   glm::vec3 {-20, 10, 0}, glm::vec3 {glm::radians(270.0), 0, 0}, glm::vec3 {0.2, 0.2, 0.2});
     sceneStructure->addChild(dog);
 
     std::shared_ptr<treeStruct> bucket = std::make_shared<treeStruct>("bucket", std::move(std::make_unique<Bucket>("models/bucket.obj", "textures/bucket.bmp")),
@@ -283,30 +288,11 @@ void Scene::init() {
 //    ((Terrain*)waterInBucket1->obj.get())->type = Terrain::TERRAIN_TYPE::WATER;
     sceneStructure->addChild(waterInBucket1);
 
-    /*std::shared_ptr<treeStruct> fish1 = std::make_shared<treeStruct>("fish1", std::move(std::make_unique<Fish>("models/fish1.obj", "textures/fish1.bmp")),
-                                                                     glm::vec3 {5.0, 5.0, 101.0},
-                                                                     glm::vec3 {glm::radians(0.0), 0, 0},
-                                                                     glm::vec3 {0.5, 0.5, 0.5});
-    sceneStructure->addChild(fish1);
-
-    std::shared_ptr<treeStruct> fish2 = std::make_shared<treeStruct>("fish2", std::move(std::make_unique<Fish>("models/fish2.obj", "textures/fish2.bmp")),
-                                                                     glm::vec3 {10.0, 5.0, 101.0},
-                                                                     glm::vec3 {glm::radians(270.0), glm::radians(90.0), 0},
-                                                                     glm::vec3 {0.1, 0.1, 0.1});
-    sceneStructure->addChild(fish2);
-
-
-    std::shared_ptr<treeStruct> fish3 = std::make_shared<treeStruct>("fish3", std::move(std::make_unique<Fish>("models/fish3.obj", "textures/fish3.bmp")),
-                                                                     glm::vec3 {15.0, 5.0, 101.0},
-                                                                     glm::vec3 {glm::radians(0.0), 0, 0},
-                                                                     glm::vec3 {0.5, 0.5, 0.5});
-    sceneStructure->addChild(fish3);*/
 
 
 
-    /*
-    for(int i = 0; i < 0; i++) {
-        auto gate_first_row = std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp");
+    for(int i = 0; i < 5; i++) {
+        /*auto gate_first_row = std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp");
         gate_first_row->rotation = {3 * ppgso::PI / 2, 0, 0};
         gate_first_row->scale = {0.1, 0.1, 0.1};
         gate_first_row->position = {-58.0 + (i * 27.6), 3.5, -70.0};
@@ -325,9 +311,9 @@ void Scene::init() {
         gate_fourth_row->scale = {0.1, 0.1, 0.1};
         gate_fourth_row->position = {66, 3.5, -56.0 + (i * 27.6)};
         objects.push_back(std::move(gate_fourth_row));
-        printSceneInitProgress(++progress, maxProgress);
+        printSceneInitProgress(++progress, maxProgress);*/
     }
-    */
+
 
     std::cout << "Scene init done" << std::endl;
 }

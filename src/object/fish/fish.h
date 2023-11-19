@@ -20,7 +20,6 @@ public:
             {-1.60295, -31.1129, 174.94},
             {-2.11358, -40.8538, 184.073}
     };
-    bool test = false;
     std::vector<glm::vec3> LAKE_FISH_PATH_POINTS;
     ENUM_FISH_TYPE fishType;
     float currentTimeInPath = 0.0f;

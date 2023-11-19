@@ -54,14 +54,14 @@ bool Dog::update(Scene &scene, float dt) {
 
     currentTimeInPath += dt;
 
-    glm::vec3 new_position = bezierRec(path_points, currentTimeInPath / 20);
+    glm::vec3 new_position = bezierRec(path_points, currentTimeInPath / 7);
 
     auto deltaPos = glm::normalize(position - (new_position + offset));
     position = new_position + offset;
 
     rotation.y = float(atan2(deltaPos.x, deltaPos.z) + glm::radians(180.0));
 
-    if (currentTimeInPath > 20) {
+    if (currentTimeInPath >= 7.0f) {
         currentTimeInPath = 0;
     }
 

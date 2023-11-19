@@ -51,7 +51,8 @@ Bubble::Bubble(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, glm::vec
 
     BUBBLE_PATH_POINTS.push_back(position);
     position.y += 1.0f;
-    BUBBLE_PATH_POINTS.push_back(Utils::getPointTowards(position, rotation.x, 3.0f));
-    position.y -= 2.0f;
-    BUBBLE_PATH_POINTS.push_back(Utils::getPointTowards(position, rotation.x, 3.0f));
+    glm::vec3 pointTowards = Utils::getPointTowards(position, rotation.x, 3.0f);
+    BUBBLE_PATH_POINTS.push_back(pointTowards);
+    pointTowards.y -= 2.0f;
+    BUBBLE_PATH_POINTS.push_back(Utils::getPointTowards(pointTowards, rotation.x, 3.0f));
 }

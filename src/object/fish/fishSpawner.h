@@ -1,7 +1,3 @@
-//
-// Created by wraith on 18.11.2023.
-//
-
 #ifndef PPGSO_FISHSPAWNER_H
 #define PPGSO_FISHSPAWNER_H
 
@@ -26,11 +22,11 @@ public:
             glm::vec3 {0.1, 0.1, 0.1},
             glm::vec3 {0.5, 0.5, 0.5}
     };
-    const float BUCKET_FISH_SPAWN_INTERVAL = 2.0f;
-    const float LAKE_FISH_SPAWN_INTERVAL = 1.0f;
+    const float BUCKET_FISH_SPAWN_INTERVAL = 10.0f;
+    const float LAKE_FISH_SPAWN_INTERVAL = 5.0f;
 
-    static constexpr const float BUCKET_FISH_PATH_TIME_INTERVAL = 4.0f;
-    static constexpr const float LAKE_FISH_PATH_TIME_INTERVAL = 1.5f;
+    static constexpr const float BUCKET_FISH_PATH_TIME_INTERVAL = 2.5f;
+    static constexpr const float LAKE_FISH_PATH_TIME_INTERVAL = 1.0f;
 private:
     float bucketFishSpawnInterval = 0.0f;
     float lakeFishSpawnTime = 0.0f;

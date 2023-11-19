@@ -7,7 +7,6 @@
 #include "src/utils/utils.h"
 #include "src/object/cat/cat.h"
 
-
 void createSplashParticles(glm::vec3 position, Scene &scene);
 
 Fish::Fish(const std::string model, const std::string texture, ENUM_FISH_TYPE fishType) {
@@ -24,26 +23,21 @@ Fish::Fish(const std::string model, const std::string texture, ENUM_FISH_TYPE fi
 }
 
 bool Fish::update(Scene &scene, float dt) {
+    glm::vec3 futurePosition;
+
     currentTimeInPath += dt;
+
     if(fishType == ENUM_FISH_TYPE::BUCKET_FISH) {
-        glm::vec3 futurePosition = Bezier::bezierRec(BUCKET_FISH_PATH_POINTS, currentTimeInPath / FishSpawner::BUCKET_FISH_PATH_TIME_INTERVAL);
-        auto deltaPos = glm::normalize(position - futurePosition);
-        position = futurePosition;
-    }
-    if(fishType == ENUM_FISH_TYPE::WATER_FISH) {
-        std::cout << "LAKE_FISH_PATH_POINTS.size(): " << LAKE_FISH_PATH_POINTS.size() << std::endl;
-        std::cout << "x: " << LAKE_FISH_PATH_POINTS[0].x << " y: " << LAKE_FISH_PATH_POINTS[0].y << " z: " << LAKE_FISH_PATH_POINTS[0].z << std::endl;
-        glm::vec3 futurePosition = Bezier::bezierRec(LAKE_FISH_PATH_POINTS, currentTimeInPath / 0.5);
-        auto deltaPos = glm::normalize(position - futurePosition);
-        position = futurePosition;
+        futurePosition = Bezier::bezierRec(BUCKET_FISH_PATH_POINTS, currentTimeInPath / FishSpawner::BUCKET_FISH_PATH_TIME_INTERVAL);
+    } else if(fishType == ENUM_FISH_TYPE::WATER_FISH) {
+        futurePosition = Bezier::bezierRec(LAKE_FISH_PATH_POINTS, currentTimeInPath / FishSpawner::LAKE_FISH_PATH_TIME_INTERVAL);
     }
 
+    position = futurePosition;
     generateModelMatrix();
 
     if (position.y < -33.0) {
-        if (test == false)
-            createSplashParticles(position, scene);
-        test = true;
+        createSplashParticles(position, scene);
         return false;
     }
 
@@ -85,14 +79,15 @@ Fish::Fish(const std::string model, const std::string texture, glm::vec3 positio
 void createSplashParticles(glm::vec3 position, Scene &scene) {
     glm::vec3 bubblePosition = position;
     bubblePosition.y = -33;
-    for (int i = 0; i < 10; ++i) {
-        double angle = i * (2 * M_PI / 10);
-        bubblePosition.x += 1.0 * cos(angle);
-        bubblePosition.z += 1.0 * sin(angle);
+    for (int i = 0; i < 5; ++i) {
+        double angle = i * (2 * M_PI / 5);
+        bubblePosition.x += float(1.0f * cos(angle));
+        bubblePosition.z += float(1.0f * sin(angle));
 
         auto bubble = std::make_unique<Bubble>(bubblePosition, glm::vec3{angle, 0, 0}, glm::vec3{0.25, 0.25, 0.25}, glm::vec3{0, 1, 0});
+        scene.objects.push_back(move(bubble));
+
 //        std::shared_ptr<treeStruct> tree = std::make_shared<treeStruct>("bubble", std::move(bubble));
 //        scene.sceneStructure->addChild(tree);
-        scene.objects.push_back(move(bubble));
     }
 }
