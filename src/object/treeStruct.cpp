@@ -40,17 +40,23 @@ void treeStruct::update(Scene &scene, float dt) {
     }
 
     if(obj && !(obj->update(scene, dt))) {
-        if(right) {
-            right->left = NULL;
-        }
-        if(left) {
-            left->right = NULL;
-        }
-        if(parent && !right) {
-            parent->child = NULL;
-        }
         if(child) {
-            child->parent = parent;
+            child->parent = NULL;
+
+        }
+
+        if(left && right) {
+            left->right = right;
+            right->left = left;
+        }
+
+        if(parent && !left && right) {
+            right->left = NULL;
+            parent->child = right;
+        }
+
+        if(parent && !left && !right) {
+            parent->child = NULL;
         }
     }
 

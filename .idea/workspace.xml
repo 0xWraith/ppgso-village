@@ -3,9 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader">{
-  &quot;useNewFormat&quot;: true
-}</component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -22,31 +22,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/models/bubble.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/models/bucket.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/camera/cinematic/keyframe.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/camera/cinematic/keyframe.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/fish/fishSpawner.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/fish/fishSpawner.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/particles/bubble.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/particles/bubble.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/bezier/bezier.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/bezier/bezier.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/utils.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/utils.h" afterDir="false" />
+    <list default="true" id="2da2d5c1-41ed-41f4-a82f-4e551f85868c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/camera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/cat/cat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/cat/cat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/dog/dog.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/dog/dog.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/dog/dog.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/dog/dog.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/object/fish/fish.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/fish/fish.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/fish/fish.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/fish/fish.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/treeStruct.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/treeStruct.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +44,10 @@
     <option name="majorVersion" value="2023" />
     <option name="minorVersion" value="2.2" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2YAhaA6F9dYQCQ5uz6njh6cBRja" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2YOmehEFb4hWxo79rlbiKiWGMHD" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -85,7 +61,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "dev",
-    "last_opened_file_path": "D:/Projects/ppgso-village/data/models",
+    "last_opened_file_path": "C:/Users/marek/Desktop/fiit stuba/5. semester/PPGSO/projekt/github/ppgso-vilage2/ppgso-village/CMakeLists.txt",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,15 +69,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Projects\ppgso-village\data\models" />
-      <recent name="C:\Users\marek\Desktop\fiit stuba\5. semester\PPGSO\projekt\github\ppgso-vilage2\ppgso-village\src\object" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Projects\ppgso-village\src" />
-    </key>
-  </component>
   <component name="RunManager" selected="CMake Application.Village">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
@@ -132,22 +99,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="" />
-      <created>1699974352121</created>
+      <changelist id="2da2d5c1-41ed-41f4-a82f-4e551f85868c" name="Changes" comment="" />
+      <created>1700405097044</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1699974352121</updated>
-      <workItem from="1699974353184" duration="3489000" />
-      <workItem from="1700094102382" duration="2073000" />
+      <updated>1700405097044</updated>
+      <workItem from="1700405098218" duration="486000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="dependencySupport" implementationName="executable:docker" />
-    <option featureType="dependencySupport" implementationName="executable:kubectl" />
   </component>
   <component name="VCPKGProject">
     <isAutomaticEditVcpkgJson value="false" />

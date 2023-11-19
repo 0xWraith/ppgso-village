@@ -5,6 +5,7 @@
 #include "src/object/fish/fishSpawner.h"
 #include "src/object/particles/bubble.h"
 #include "src/utils/utils.h"
+#include "src/object/cat/cat.h"
 
 
 void createSplashParticles(glm::vec3 position, Scene &scene);
@@ -43,8 +44,9 @@ bool Fish::update(Scene &scene, float dt) {
         if (test == false)
             createSplashParticles(position, scene);
         test = true;
-//        return false;
+        return false;
     }
+
     return true;
 }
 
