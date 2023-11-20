@@ -3,7 +3,8 @@
 
 #include <ppgso/ppgso.h>
 #include <string>
-#include "src/object/object.h"
+
+class Scene;
 
 class FishSpawner {
 public:

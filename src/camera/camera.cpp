@@ -5,11 +5,11 @@ Camera::Camera(float fow, float ratio, float near, float far) {
 }
 
 void Camera::update() {
-    viewMatrix = glm::lookAt(
-            position,
-            position + cameraFront,
-            cameraUp
-            );
+    if (CAMERA_MODE == ENUM_CAMERA_MODE::FREE) {
+        viewMatrix = glm::lookAt(position, position + cameraFront, cameraUp);
+    } else if (CAMERA_MODE == ENUM_CAMERA_MODE::CINEMATIC) {
+        viewMatrix = glm::lookAt(position, CAMERA_LOOK_AT, cameraUp);
+    }
 }
 
 glm::mat4 Camera::recalculateProjectionMatrix(float fov, float ratio, float near, float far) {

@@ -3,9 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -22,10 +22,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2da2d5c1-41ed-41f4-a82f-4e551f85868c" name="Changes" comment="">
+    <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera/camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/camera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera/camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/camera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/cinematic.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/keyframe.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/keyframe.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/keyframe.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/keyframe.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/object/fish/fish.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/fish/fish.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/treeStruct.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/treeStruct.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/fish/fishSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/fish/fishSpawner.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,31 +52,40 @@
     <option name="majorVersion" value="2023" />
     <option name="minorVersion" value="2.2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2YOmehEFb4hWxo79rlbiKiWGMHD" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "dev",
-    "last_opened_file_path": "C:/Users/marek/Desktop/fiit stuba/5. semester/PPGSO/projekt/github/ppgso-vilage2/ppgso-village/CMakeLists.txt",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/ppgso-village/data/models&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\ppgso-village\data\models" />
+      <recent name="C:\Users\marek\Desktop\fiit stuba\5. semester\PPGSO\projekt\github\ppgso-vilage2\ppgso-village\src\object" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\ppgso-village\src" />
+    </key>
+  </component>
   <component name="RunManager" selected="CMake Application.Village">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
@@ -99,12 +116,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2da2d5c1-41ed-41f4-a82f-4e551f85868c" name="Changes" comment="" />
+      <changelist id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="" />
       <created>1700405097044</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1700405097044</updated>
-      <workItem from="1700405098218" duration="486000" />
+      <updated>1699974352121</updated>
+      <workItem from="1699974353184" duration="3489000" />
+      <workItem from="1700094102382" duration="2073000" />
+      <workItem from="1700350046152" duration="462000" />
+      <workItem from="1700399618836" duration="1281000" />
+      <workItem from="1700412408230" duration="6787000" />
     </task>
     <servers />
   </component>

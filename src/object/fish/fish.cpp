@@ -79,8 +79,8 @@ Fish::Fish(const std::string model, const std::string texture, glm::vec3 positio
 void createSplashParticles(glm::vec3 position, Scene &scene) {
     glm::vec3 bubblePosition = position;
     bubblePosition.y = -33;
-    for (int i = 0; i < 5; ++i) {
-        double angle = i * (2 * M_PI / 5);
+    for (int i = 0, particles = Utils::randomInt(5, 15); i < particles; ++i) {
+        double angle = i * (2 * M_PI / particles);
         bubblePosition.x += float(1.0f * cos(angle));
         bubblePosition.z += float(1.0f * sin(angle));
 

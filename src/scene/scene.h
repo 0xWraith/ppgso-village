@@ -9,6 +9,7 @@
 #include "src/camera/camera.h"
 #include "src/object/object.h"
 #include "src/object/fish/fishSpawner.h"
+#include "src/camera/cinematic/cinematic.h"
 #include <vector>
 #include <list>
 #include <map>
@@ -25,6 +26,7 @@ public:
     std::shared_ptr<treeStruct> sceneStructure;
     std::unique_ptr<Camera> camera;
     std::unique_ptr<FishSpawner> fishSpawner;
+    std::unique_ptr<Cinematic> cinematic;
     std::map<int, int> keyboard;
     unsigned int skyboxVAO, skyboxVBO;
     unsigned int cubeVAO, cubeVBO;
@@ -33,6 +35,7 @@ public:
 
 private:
     void generateSkybox();
+    void initCinematic();
 
 public:
     void init();

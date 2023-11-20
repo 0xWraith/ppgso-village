@@ -150,7 +150,12 @@ void Scene::update(float time) {
         std::cout << "glm::vec3(" << camera->position.x << ", " << camera->position.y << ", " << camera->position.z << ")," << std::endl;
     }
     if (keyboard[GLFW_KEY_9]) {
-
+        if (!cinematic->isStarted()) {
+            cinematic->start(*this);
+        }
+    }
+    if (keyboard[GLFW_KEY_8]) {
+        cinematic->stop();
     }
 
     glDepthFunc(GL_LEQUAL);
@@ -171,6 +176,10 @@ void Scene::update(float time) {
 
     this->camera->update();
     fishSpawner->update(*this, time);
+
+    if (cinematic->isStarted()) {
+        cinematic->update(*this, time);
+    }
 }
 
 void Scene::render() {
@@ -189,6 +198,9 @@ void Scene::init() {
     const int maxProgress = 26;
 
     generateSkybox();
+    printSceneInitProgress(++progress, maxProgress);
+
+    initCinematic();
     printSceneInitProgress(++progress, maxProgress);
 
     objects.clear();
@@ -267,7 +279,6 @@ void Scene::init() {
 
     std::shared_ptr<treeStruct> water = std::make_shared<treeStruct>("water", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/water.bmp")),
                                                                      glm::vec3 {0.0, -45, 250}, glm::vec3 {3*ppgso::PI/2, 0, 0}, glm::vec3 {1, 1, 1});
-    //Cast to Terrain
     ((Terrain*)water->obj.get())->type = Terrain::TERRAIN_TYPE::WATER;
     sceneStructure->addChild(water);
 
@@ -316,6 +327,21 @@ void Scene::init() {
 
 
     std::cout << "Scene init done" << std::endl;
+}
+
+void Scene::initCinematic() {
+
+    //Create cinematic object
+    cinematic = std::make_unique<Cinematic>();
+
+    cinematic->addKeyframe(Keyframe {
+            0.0f,
+            15.0f,
+            glm::vec3(-0.133243, 6.21597, 101.762),
+            glm::vec3(1.18998, -28.3695, 250.112),
+            glm::vec3(-35.6095, 11.6488, -35.7162),
+            glm::vec3(51.9252, 26.1331, 29.1459),
+    });
 }
 
 void Scene::generateSkybox() {
