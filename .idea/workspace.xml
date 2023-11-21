@@ -24,16 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/camera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/camera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/cinematic.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/keyframe.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/keyframe.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/keyframe.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/keyframe.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/fish/fish.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/fish/fish.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/fish/fishSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/fish/fishSpawner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/treeStruct.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/treeStruct.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +60,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projects/ppgso-village/data/models&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marek/Desktop/fiit stuba/5. semester/PPGSO/projekt/github/ppgso-village4/ppgso-village/CMakeLists.txt&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -87,11 +78,6 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.Village">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Village" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ppgso" TARGET_NAME="Village" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ppgso" RUN_TARGET_NAME="Village">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -126,6 +112,9 @@
       <workItem from="1700350046152" duration="462000" />
       <workItem from="1700399618836" duration="1281000" />
       <workItem from="1700412408230" duration="6787000" />
+      <workItem from="1700469217539" duration="268000" />
+      <workItem from="1700582292568" duration="86000" />
+      <workItem from="1700582419140" duration="89000" />
     </task>
     <servers />
   </component>
