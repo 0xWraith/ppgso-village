@@ -78,16 +78,22 @@ Fish::Fish(const std::string model, const std::string texture, glm::vec3 positio
 
 void createSplashParticles(glm::vec3 position, Scene &scene) {
     glm::vec3 bubblePosition = position;
-    bubblePosition.y = -33;
-    for (int i = 0, particles = Utils::randomInt(5, 15); i < particles; ++i) {
-        double angle = i * (2 * M_PI / particles);
-        bubblePosition.x += float(1.0f * cos(angle));
-        bubblePosition.z += float(1.0f * sin(angle));
+//    bubblePosition.y = -33;
+    for (int i = 0, particles = Utils::randomInt(15, 20); i < particles; ++i) {
+        /*double angle = i * (2 * M_PI / particles);                    //in circle
+        auto x = float(1.0f * cos(angle));
+        auto z = float(1.0f * sin(angle));*/
 
-        auto bubble = std::make_unique<Bubble>(bubblePosition, glm::vec3{angle, 0, 0}, glm::vec3{0.25, 0.25, 0.25}, glm::vec3{0, 1, 0});
-        scene.objects.push_back(move(bubble));
+     //   auto s = glm::vec3{x * 5, 10, z *5};
 
-//        std::shared_ptr<treeStruct> tree = std::make_shared<treeStruct>("bubble", std::move(bubble));
-//        scene.sceneStructure->addChild(tree);
+        auto speed = glm::ballRand(2*M_PI);             //random
+        speed.y = std::min(std::abs(speed.y) + 7.5,5.);
+
+
+        auto bubble = std::make_unique<Bubble>(bubblePosition, glm::vec3{0, 0, 0}, glm::vec3{0.25, 0.25, 0.25}, speed);
+//        scene.objects.push_back(std::move(bubble));
+
+        std::shared_ptr<treeStruct> tree = std::make_shared<treeStruct>("bubble", std::move(bubble));
+        scene.sceneStructure->addChild(tree);
     }
 }

@@ -335,6 +335,7 @@ void Scene::initCinematic() {
     cinematic = std::make_unique<Cinematic>();
 
     cinematic->addKeyframe(Keyframe {
+        Keyframe::ENUM_KEYFRAME_TYPE::DYNAMIC,
             0.0f,
             15.0f,
             glm::vec3(-0.133243, 6.21597, 101.762),

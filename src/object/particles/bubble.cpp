@@ -11,15 +11,14 @@
 
 bool Bubble::update(Scene &scene, float dt) {
     lifeTime += dt;
-//    position += speed * dt;
 
-    glm::vec3 futurePosition = Bezier::bezierRec(BUBBLE_PATH_POINTS, lifeTime / 0.5);
-    auto deltaPos = glm::normalize(position - futurePosition);
-    position = futurePosition;
-
-    if (lifeTime >= 0.5f) {
+    if (lifeTime >= 2.5f) {
         return false;
     }
+
+    glm::vec3 gravity = glm::vec3{0,-9.8,0};
+    speed += ( (gravity) * dt);
+    position += speed * dt;
 
     generateModelMatrix();
     return true;
@@ -49,10 +48,4 @@ Bubble::Bubble(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, glm::vec
         mesh = std::make_unique<ppgso::Mesh>("models/bubble.obj");
     }
 
-    BUBBLE_PATH_POINTS.push_back(position);
-    position.y += 1.0f;
-    glm::vec3 pointTowards = Utils::getPointTowards(position, rotation.x, 3.0f);
-    BUBBLE_PATH_POINTS.push_back(pointTowards);
-    pointTowards.y -= 2.0f;
-    BUBBLE_PATH_POINTS.push_back(Utils::getPointTowards(pointTowards, rotation.x, 3.0f));
 }
