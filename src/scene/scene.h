@@ -33,6 +33,10 @@ public:
     std::unique_ptr<ppgso::Shader> skyboxShader;
     unsigned int cubemapTexture;
 
+    unsigned int FBO;
+    unsigned int framebufferTexture;
+    unsigned int rectangleVAO, rectangleVBO;
+
 private:
     void generateSkybox();
     void initCinematic();

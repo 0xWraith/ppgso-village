@@ -70,6 +70,7 @@ set(PPGSO_SHADER_SRC
         shader/ambient_frag.glsl
         shader/phong_frag.glsl shader/phong_vert.glsl
         shader/skybox_frag.glsl shader/skybox_vert.glsl
+        shader/framebuffer_frag.glsl shader/framebuffer_vert.glsl
 )
 add_resources(shaders ${PPGSO_SHADER_SRC})
 
