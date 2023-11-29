@@ -134,6 +134,7 @@ public:
         glClear(GL_COLOR_BUFFER_BIT);
 
         framebufferShader->use();
+        framebufferShader->setUniform("time", deltaTime);
         glBindVertexArray(quadVAO);
         glDisable(GL_DEPTH_TEST);
         glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
