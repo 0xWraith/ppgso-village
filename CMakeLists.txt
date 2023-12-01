@@ -138,6 +138,8 @@ add_executable(Village
         src/object/gaslamp/gaslamplight.h
         src/object/particles/firefly/fireflies.cpp
         src/object/particles/firefly/fireflies.h
+        src/utils/config/config.cpp
+        src/utils/config/config.h
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)

@@ -14,7 +14,6 @@ FireFly::FireFly(glm::vec3 position) {
             position.z + float(Utils::randomInt(-3, 3)));
 
     this->position = pos;
-    color = glm::vec3(95 / 255.0, 227 / 255.0, 141 / 255.0);
     if(!shader) {
         shader = std::make_unique<ppgso::Shader>(color_vert_glsl, color_frag_glsl);
     }

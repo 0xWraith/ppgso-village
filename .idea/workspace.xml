@@ -23,31 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/shader/pp_bloom_frag.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shader/pp_noise_frag.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/gaslamp/gaslamp.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/gaslamp/gaslamp.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/gaslamp/gaslamplight.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/gaslamp/gaslamplight.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/postprocessing/bloom/bloom.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/postprocessing/bloom/bloom.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/postprocessing/noise/noise.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/postprocessing/noise/noise.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/config/config.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/config/config.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shader/framebuffer_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/framebuffer_frag.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shader/phong_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/phong_frag.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VillageWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/VillageWindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/bucket/bucket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/bucket/bucket.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/cat/cat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/cat/cat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/dog/dog.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/dog/dog.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/fish/fishSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/fish/fishSpawner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/particles/bubble.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/particles/bubble.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/terrain/terrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/terrain/terrain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,12 +95,12 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.Village">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Village" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ppgso" TARGET_NAME="Village" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ppgso" RUN_TARGET_NAME="Village">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Village" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ppgso" TARGET_NAME="Village" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ppgso" RUN_TARGET_NAME="Village">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -162,6 +144,7 @@
       <workItem from="1701293274296" duration="5935000" />
       <workItem from="1701371261495" duration="7142000" />
       <workItem from="1701384619594" duration="5901000" />
+      <workItem from="1701438089571" duration="1527000" />
     </task>
     <servers />
   </component>

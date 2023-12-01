@@ -18,6 +18,8 @@
 #include "src/object/gaslamp/gaslamp.h"
 #include "src/object/gaslamp/gaslamplight.h"
 #include "src/object/particles/firefly/fireflies.h"
+#include "src/utils/config/config.h"
+#include "src/utils/utils.h"
 
 void printSceneInitProgress(int progress, int max);
 
@@ -303,7 +305,7 @@ void Scene::init() {
     sceneStructure->addChild(waterInBucket1);
 
 
-    if(daylight == false) {
+    if(DAY_TIME == false) {
         std::shared_ptr<treeStruct> moon = std::make_shared<treeStruct>("moon", std::move(std::make_unique<Terrain>("models/moon.obj", "textures/moon.bmp")),glm::vec3{774.256, 1891.07, 1095.69}, glm::vec3{0, 0, 0}, glm::vec3{100, 100, 100});
         sceneStructure->addChild(moon);
     }
@@ -412,19 +414,25 @@ void Scene::generateSkybox() {
 
 void Scene::initLights() {
 
-//    if (daylight == true) {
-//        lights[0].position = {666.655, 1654.05, 967.464};
-//        lights[0].color = {200 / 255.0, 200 / 255.0, 200 / 255.0};
-//        lights[0].range = 5000.0f;
-//        lights[0].strength = 5.f;
-//        lightCount++;
-//        return;
-//    }
+    if (DAY_TIME == true) {
+        lights[0].position = {666.655, 1654.05, 967.464};
+        lights[0].color = {200 / 255.0, 200 / 255.0, 200 / 255.0};
+        lights[0].range = 5000.0f;
+        lights[0].strength = 5.f;
+        lightCount++;
+        return;
+    }
 
     lights[0].position = {666.655, 1654.05, 967.464};
     lights[0].color = {29 / 255.0, 78 / 255.0, 105 / 255.0};
     lights[0].range = 5000.0f;
     lights[0].strength = 3.5f;
+    lightCount++;
+
+    lights[1].position = glm::vec3(633.615, 1729.08, 979.094);
+    lights[1].color = {255 / 255.0, 255 / 255.0, 255 / 255.0};
+    lights[1].range = 300.0f;
+    lights[1].strength = 10.5f;
     lightCount++;
 
     glm::vec3 gasLampPositions[] = {
@@ -436,16 +444,16 @@ void Scene::initLights() {
 
     for(int i = 0; i < sizeof gasLampPositions / sizeof gasLampPositions[0]; i++) {
 
-        lights[1 + i].position = gasLampPositions[i];
-        lights[1 + i].position.y += 2.5;
-        lights[1 + i].color = {255 / 255.0, 136 / 255.0, 49 / 255.0};
-        lights[1 + i].range = 40.0f;
-        lights[1 + i].strength = 10.0f;
+        lights[2 + i].position = gasLampPositions[i];
+        lights[2 + i].position.y += 2.5;
+        lights[2 + i].color = {255 / 255.0, 136 / 255.0, 49 / 255.0};
+        lights[2 + i].range = 40.0f;
+        lights[2 + i].strength = 10.0f;
 
         std::shared_ptr<treeStruct> gaslamp = std::make_shared<treeStruct>("gaslamp" + std::to_string(i), std::move(std::make_unique<Terrain>("models/lamp.obj", "textures/lamp.bmp")),gasLampPositions[i], glm::vec3 {0, 0, 0}, glm::vec3 {0.5, 0.5, 0.5});
         sceneStructure->addChild(gaslamp);
 
-        std::shared_ptr<treeStruct> gaslampLight = std::make_shared<treeStruct>("gaslamplight" + std::to_string(i), std::move(std::make_unique<GasLampLight>(lights[1 + i].color)),glm::vec3 {0, 2.5, 0}, glm::vec3 {0, 0, 0}, glm::vec3 {2, 2, 2});
+        std::shared_ptr<treeStruct> gaslampLight = std::make_shared<treeStruct>("gaslamplight" + std::to_string(i), std::move(std::make_unique<GasLampLight>(lights[2 + i].color)),glm::vec3 {0, 2.5, 0}, glm::vec3 {0, 0, 0}, glm::vec3 {2, 2, 2});
         sceneStructure->addObject("gaslamp" + std::to_string(i), gaslampLight);
 
         lightCount++;
@@ -567,16 +575,47 @@ void Scene::initLights() {
             glm::vec3(-55.5611, 6.6814, 2.49756),
             glm::vec3(-56.6015, 8.51297, -11.0591),
             glm::vec3(46.7538, 30.7801, -52.0289),
+
+            glm::vec3(-39.6879, 10.8675, -34.27),
+            glm::vec3(-43.6781, 14.1054, -31.9131),
+            glm::vec3(-50.5999, 8.54739, -39.7979),
+            glm::vec3(-42.9395, 6.16821, -44.1019),
+            glm::vec3(-39.7291, 6.31674, -62.358),
+            glm::vec3(-34.3271, 20.912, -11.4463),
+            glm::vec3(-30.6248, 18.4365, 6.51366),
+            glm::vec3(-42.3183, 18.7172, -37.256),
+            glm::vec3(-34.0737, 18.6167, -34.6102),
+            glm::vec3(-34.8092, 19.9527, -27.4604),
+            glm::vec3(-49.7454, 23.7035, 3.93544),
+            glm::vec3(-49.5068, 21.9461, -5.1445),
+            glm::vec3(-52.5883, 19.916, -15.7219),
+            glm::vec3(-50.2468, 20.3854, -23.4163),
+            glm::vec3(-47.3091, 22.9038, -23.2454),
+            glm::vec3(-45.9627, 25.5516, -18.656),
+            glm::vec3(44.8513, 26.4914, -53.8175),
+            glm::vec3(47.3662, 30.166, -52.1148),
+            glm::vec3(42.7897, 29.238, -51.8878),
+            glm::vec3(40.619, 38.2182, -54.7615),
+            glm::vec3(40.6952, 45.0715, -55.0801),
+            glm::vec3(41.2903, 46.9094, -48.9851),
+            glm::vec3(41.6894, 44.8252, -49.6387),
+            glm::vec3(40.7353, 53.0714, -50.0645),
+            glm::vec3(39.3084, 52.2244, -49.3574),
+            glm::vec3(37.0179, 50.5272, -49.3477),
+            glm::vec3(-42.4085, 6.34924, -34.3486),
+            glm::vec3(-45.8553, 10.7848, -32.6264),
+            glm::vec3(-40.9255, 11.0233, -31.4153),
+            glm::vec3(-38.0525, 12.9353, -31.4485),
     };
 
     for(int i = 0; i < sizeof fireFlyPositions / sizeof fireFlyPositions[0]; i++) {
-        lights[5 + i].position = fireFlyPositions[i];
-        lights[5 + i].color = glm::vec3(95 / 255.0, 227 / 255.0, 141 / 255.0);
-        lights[5 + i].range = 13.0f;
-        lights[5 + i].strength = 3.0f;
+        lights[6 + i].position = fireFlyPositions[i];
+        lights[6 + i].color = Config::CONFIG_FIREFLY_COLOR;
+        lights[6 + i].range = 13.0f;
+        lights[6 + i].strength = 3.0f;
 
         std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>("fire" + std::to_string(i), std::move(std::make_unique<FireFly>(fireFlyPositions[i])), fireFlyPositions[i], glm::vec3 {0, 0, 0}, glm::vec3 {0.1, 0.1, 0.1});
-        (dynamic_cast<FireFly*>(fire->obj.get()))->lightIndex = 4 + i;
+        (dynamic_cast<FireFly*>(fire->obj.get()))->lightIndex = 6 + i;
         (dynamic_cast<FireFly*>(fire->obj.get()))->isStatic = true;
         sceneStructure->addChild(fire);
         lightCount++;

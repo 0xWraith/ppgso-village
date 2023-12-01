@@ -7,12 +7,13 @@
 
 #include "src/scene/Scene.h"
 #include "src/object/object.h"
+#include "src/utils/config/config.h"
 
 class FireFly final : public Object {
 public:
     int lightIndex = -1;
     glm::vec3 speed;
-    glm::vec3 color;
+    glm::vec3 color = Config::CONFIG_FIREFLY_COLOR;
     float lifeTime = 0.0f;
     bool isStatic = false;
     bool update(Scene &scene, float dt) override;
