@@ -23,8 +23,8 @@ public:
             glm::vec3 {0.1, 0.1, 0.1},
             glm::vec3 {0.5, 0.5, 0.5}
     };
-    const float BUCKET_FISH_SPAWN_INTERVAL = 10.0f;
-    const float LAKE_FISH_SPAWN_INTERVAL = 5.0f;
+    const float BUCKET_FISH_SPAWN_INTERVAL = 10.0f * 99999;
+    const float LAKE_FISH_SPAWN_INTERVAL = 5.0f * 99999;
 
     static constexpr const float BUCKET_FISH_PATH_TIME_INTERVAL = 2.5f;
     static constexpr const float LAKE_FISH_PATH_TIME_INTERVAL = 1.0f;

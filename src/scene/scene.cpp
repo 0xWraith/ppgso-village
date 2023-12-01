@@ -15,6 +15,9 @@
 #include "src/object/tree/tree.h"
 #include "src/object/treeStruct.h"
 #include "src/object/particles/bubble.h"
+#include "src/object/gaslamp/gaslamp.h"
+#include "src/object/gaslamp/gaslamplight.h"
+#include "src/object/particles/firefly/fireflies.h"
 
 void printSceneInitProgress(int progress, int max);
 
@@ -220,7 +223,7 @@ void Scene::init() {
     sceneStructure->addChild(grass);
     printSceneInitProgress(++progress, maxProgress);
 
-    std::shared_ptr<treeStruct> house = std::make_shared<treeStruct>("house", std::move(std::make_unique<House>("models/house.obj", "textures/house.bmp")),
+    std::shared_ptr<treeStruct> house = std::make_shared<treeStruct>("house", std::move(std::make_unique<Terrain>("models/house.obj", "textures/house.bmp")),
                                                                      glm::vec3 {-43.1071, 3.80, -20.6743}, glm::vec3 {0 , 0, 0}, glm::vec3 {1,1,1});
     sceneStructure->addChild(house);
     printSceneInitProgress(++progress, maxProgress);
@@ -300,7 +303,13 @@ void Scene::init() {
     sceneStructure->addChild(waterInBucket1);
 
 
+    if(daylight == false) {
+        std::shared_ptr<treeStruct> moon = std::make_shared<treeStruct>("moon", std::move(std::make_unique<Terrain>("models/moon.obj", "textures/moon.bmp")),glm::vec3{774.256, 1891.07, 1095.69}, glm::vec3{0, 0, 0}, glm::vec3{100, 100, 100});
+        sceneStructure->addChild(moon);
+    }
 
+    initLights();
+    printSceneInitProgress(++progress, maxProgress);
 
     for(int i = 0; i < 5; i++) {
         /*auto gate_first_row = std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp");
@@ -330,10 +339,7 @@ void Scene::init() {
 }
 
 void Scene::initCinematic() {
-
-    //Create cinematic object
     cinematic = std::make_unique<Cinematic>();
-
     cinematic->addKeyframe(Keyframe {
         Keyframe::ENUM_KEYFRAME_TYPE::DYNAMIC,
             0.0f,
@@ -373,36 +379,20 @@ void Scene::generateSkybox() {
             DAY_TIME ? "textures/skybox/graycloud_ft.jpg" : "textures/skybox/zpos.jpg",
             DAY_TIME ? "textures/skybox/graycloud_bk.jpg" : "textures/skybox/zneg.jpg"
     };
-
-
     glGenTextures(1, &cubemapTexture);
     glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
 
-    for (unsigned int i = 0; i < 6; i++)
-    {
+    for (unsigned int i = 0; i < 6; i++) {
         int width, height, nrChannels;
         unsigned char* data = stbi_load(skyBoxTextures[i].c_str(), &width, &height, &nrChannels, 0);
-        if (data)
-        {
+        if (data) {
             std::cout << "Loaded texture: " << skyBoxTextures[i] << std::endl;
             std::cout << "Width: " << width << std::endl;
             stbi_set_flip_vertically_on_load(false);
-            glTexImage2D
-                    (
-                            GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
-                            0,
-                            GL_RGB,
-                            width,
-                            height,
-                            0,
-                            GL_RGB,
-                            GL_UNSIGNED_BYTE,
-                            data
-                    );
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0,GL_RGB, width, height,0,GL_RGB,GL_UNSIGNED_BYTE,data);
             stbi_image_free(data);
         }
-        else
-        {
+        else {
             std::cout << "Failed to load texture: " << skyBoxTextures[i] << std::endl;
             stbi_image_free(data);
         }
@@ -418,6 +408,179 @@ void Scene::generateSkybox() {
     skyboxShader->use();
 
     skyboxShader->setUniform("skybox", 0);
+}
+
+void Scene::initLights() {
+
+//    if (daylight == true) {
+//        lights[0].position = {666.655, 1654.05, 967.464};
+//        lights[0].color = {200 / 255.0, 200 / 255.0, 200 / 255.0};
+//        lights[0].range = 5000.0f;
+//        lights[0].strength = 5.f;
+//        lightCount++;
+//        return;
+//    }
+
+    lights[0].position = {666.655, 1654.05, 967.464};
+    lights[0].color = {29 / 255.0, 78 / 255.0, 105 / 255.0};
+    lights[0].range = 5000.0f;
+    lights[0].strength = 3.5f;
+    lightCount++;
+
+    glm::vec3 gasLampPositions[] = {
+            glm::vec3(-35.0, 5, -30.0),
+            glm::vec3(-50.0, 5, -30.0),
+            glm::vec3(-3.62255, 3, 99.046),
+            glm::vec3(37.3796, 5.10996, -46.4953)
+    };
+
+    for(int i = 0; i < sizeof gasLampPositions / sizeof gasLampPositions[0]; i++) {
+
+        lights[1 + i].position = gasLampPositions[i];
+        lights[1 + i].position.y += 2.5;
+        lights[1 + i].color = {255 / 255.0, 136 / 255.0, 49 / 255.0};
+        lights[1 + i].range = 40.0f;
+        lights[1 + i].strength = 10.0f;
+
+        std::shared_ptr<treeStruct> gaslamp = std::make_shared<treeStruct>("gaslamp" + std::to_string(i), std::move(std::make_unique<Terrain>("models/lamp.obj", "textures/lamp.bmp")),gasLampPositions[i], glm::vec3 {0, 0, 0}, glm::vec3 {0.5, 0.5, 0.5});
+        sceneStructure->addChild(gaslamp);
+
+        std::shared_ptr<treeStruct> gaslampLight = std::make_shared<treeStruct>("gaslamplight" + std::to_string(i), std::move(std::make_unique<GasLampLight>(lights[1 + i].color)),glm::vec3 {0, 2.5, 0}, glm::vec3 {0, 0, 0}, glm::vec3 {2, 2, 2});
+        sceneStructure->addObject("gaslamp" + std::to_string(i), gaslampLight);
+
+        lightCount++;
+    }
+
+    glm::vec3 fireFlyPositions[] = {
+            glm::vec3(46.6131, 23.2622, -38.1185),
+            glm::vec3(40.0278, 22.3502, -38.5949),
+            glm::vec3(39.7968, 22.2931, -38.6928),
+            glm::vec3(38.8064, 21.1217, -42.1043),
+            glm::vec3(35.5501, 19.5796, -45.8631),
+            glm::vec3(43.8664, 19.525, -63.9955),
+            glm::vec3(46.4989, 21.7079, -59.6947),
+            glm::vec3(46.0526, 22.7108, -58.9834),
+            glm::vec3(37.5285, 24.9817, -59.6726),
+            glm::vec3(39.2137, 28.0762, -62.2611),
+            glm::vec3(41.9187, 29.9846, -60.9166),
+
+            glm::vec3(-101.372, -27.1368, 237.037),
+            glm::vec3(-93.9439, -17.6613, 224.629),
+            glm::vec3(-83.2368, -27.1901, 226.492),
+            glm::vec3(-61.312, -16.4515, 251.158),
+            glm::vec3(-60.2665, -27.4105, 251.804),
+            glm::vec3(-59.1748, -27.3677, 252.479),
+            glm::vec3(-58.0832, -16.3249, 253.154),
+            glm::vec3(-56.9888, -16.282, 253.831),
+            glm::vec3(-55.8971, -27.2393, 254.506),
+            glm::vec3(-54.802, -16.1964, 255.183),
+            glm::vec3(-53.7097, -16.1535, 255.859),
+            glm::vec3(-52.6153, -27.1107, 256.536),
+            glm::vec3(-20.4753, -14.8512, 276.41),
+            glm::vec3(-19.9281, -27.8298, 276.749),
+            glm::vec3(-19.4933, -27.8128, 277.018),
+            glm::vec3(-9.32532, -14.4143, 283.306),
+            glm::vec3(-8.99865, -27.4015, 283.508),
+            glm::vec3(20.9712, -13.2272, 302.04),
+            glm::vec3(22.0477, -27.185, 302.706),
+            glm::vec3(22.8127, -27.155, 303.179),
+            glm::vec3(67.18, -10.9095, 283.887),
+            glm::vec3(68.5153, -278247, 281.722),
+            glm::vec3(69.19, -27.7819, 280.628),
+            glm::vec3(70.5403, -276962, 278.439),
+            glm::vec3(71.2137, -27.6534, 277.348),
+            glm::vec3(72.5648, -27.5677, 275.157),
+            glm::vec3(73.2399, -27.5248, 274.063),
+            glm::vec3(57.5986, -10.4049, 196.843),
+            glm::vec3(56.9437, -10.4306, 196.438),
+            glm::vec3(43.9334, -10.9404, 188.392),
+            glm::vec3(25.3499, -27.6686, 176.9),
+            glm::vec3(24.9139, -27.6857, 176.631),
+            glm::vec3(0.0962955, -27.226, 181.458),
+            glm::vec3(-7.0364, -27.4081, 180.586),
+            glm::vec3(-6.31377, -27.578, 175.897),
+            glm::vec3(-4.00426, -27.4647, 177.558),
+            glm::vec3(-8.06937, -27.2988, 183.9),
+            glm::vec3(-8.02754, -27.2948, 183.979),
+            glm::vec3(-7.98487, -27.2907, 184.06),
+            glm::vec3(-4.91746, -27.2746, 182.859),
+            glm::vec3(-5.90925, -27.4081, 179.994),
+            glm::vec3(-6.75353, -27.7605, 178.386),
+            glm::vec3(-2.80792, -27.4881, 176.314),
+            glm::vec3(-1.90866, -27.2089, 182.922),
+            glm::vec3(-10.4591, -27.3262, 184.436),
+            glm::vec3(-11.8527, -27.4598, 181.781),
+
+            glm::vec3(64.8318, -1.04672, 130.064),
+            glm::vec3(72.6345, -2.02778, 125.175),
+            glm::vec3(68.5839, -0.372302, 136.645),
+            glm::vec3(134.931, -7.29579, 188.775),
+            glm::vec3(141.895, -7.60678, 194.786),
+            glm::vec3(141.913, -7.61072, 194.876),
+            glm::vec3(141.931, -7.61456, 194.964),
+            glm::vec3(131.736, -10.9071, 275.519),
+            glm::vec3(131.754, -10.911, 275.609),
+            glm::vec3(131.772, -10.9149, 275.697),
+            glm::vec3(135.469, -12.1782, 305.071),
+            glm::vec3(135.038, -12.1823, 305.255),
+            glm::vec3(134.97, -12.186, 305.357),
+            glm::vec3(80.9053, -14.5308, 341.09),
+            glm::vec3(74.3916, -13.5109, 397.251),
+            glm::vec3(74.3134, -13.508, 397.299),
+            glm::vec3(42.628, -12.5656, 403.051),
+            glm::vec3(41.8781, -12.5485, 402.873),
+            glm::vec3(-52.8058, -9.82799, 409.59),
+            glm::vec3(-105.776, -9.39869, 361.143),
+            glm::vec3(-138.269, -10.4575, 319.241),
+            glm::vec3(-139.03, -10.5018, 318.745),
+            glm::vec3(-143.532, -11.1432, 311.133),
+            glm::vec3(-146.894, -15.3821, 259.127),
+            glm::vec3(-140.995, -15.2907, 258.745),
+            glm::vec3(-140.088, -14.382, 258.687),
+            glm::vec3(-148.526, -5.37918, 259.232),
+            glm::vec3(-98.6259, -16.9193, 177.776),
+            glm::vec3(-68.5357, 0.0523268, 127.224),
+
+            glm::vec3(11.415, 16.7821, 84.2328),
+            glm::vec3(9.19195, 15.9767, 90.5971),
+            glm::vec3(-3.96336, 16.0197, 82.5852),
+            glm::vec3(4.01537, 10.2094, 106.075),
+            glm::vec3(-4.9488, 8.60827, 106.892),
+            glm::vec3(-8.57837, 7.44412, 101.931),
+            glm::vec3(-8.48173, 6.93985, 94.578),
+
+            glm::vec3(-37.2311, 22.8469, -38.3259),
+            glm::vec3(-45.459, 20.0522, -36.2535),
+            glm::vec3(-42.7281, 19.2702, -31.5347),
+            glm::vec3(-31.9688, 11.1009, 2.94698),
+            glm::vec3(-32.0678, 7.0697, -13.0689),
+            glm::vec3(-30.4551, 13.31, -20.7007),
+            glm::vec3(-36.3614, 11.2214, 10.4418),
+            glm::vec3(-43.6273, 11.3555, 11.5963),
+            glm::vec3(-42.9232, 10.4165, 18.592),
+            glm::vec3(-40.8161, 16.5325, 9.24365),
+            glm::vec3(-55.7486, 6.60205, 2.9977),
+            glm::vec3(-55.7167, 6.61554, 2.91269),
+            glm::vec3(-55.6852, 6.62888, 2.82864),
+            glm::vec3(-55.6539, 6.64214, 2.74501),
+            glm::vec3(-55.5907, 6.66888, 2.57648),
+            glm::vec3(-55.5611, 6.6814, 2.49756),
+            glm::vec3(-56.6015, 8.51297, -11.0591),
+            glm::vec3(46.7538, 30.7801, -52.0289),
+    };
+
+    for(int i = 0; i < sizeof fireFlyPositions / sizeof fireFlyPositions[0]; i++) {
+        lights[5 + i].position = fireFlyPositions[i];
+        lights[5 + i].color = glm::vec3(95 / 255.0, 227 / 255.0, 141 / 255.0);
+        lights[5 + i].range = 13.0f;
+        lights[5 + i].strength = 3.0f;
+
+        std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>("fire" + std::to_string(i), std::move(std::make_unique<FireFly>(fireFlyPositions[i])), fireFlyPositions[i], glm::vec3 {0, 0, 0}, glm::vec3 {0.1, 0.1, 0.1});
+        (dynamic_cast<FireFly*>(fire->obj.get()))->lightIndex = 4 + i;
+        (dynamic_cast<FireFly*>(fire->obj.get()))->isStatic = true;
+        sceneStructure->addChild(fire);
+        lightCount++;
+    }
 }
 
 void printSceneInitProgress(int progress, int max) {

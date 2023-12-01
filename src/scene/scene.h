@@ -14,6 +14,13 @@
 #include <list>
 #include <map>
 
+struct Light {
+    glm::vec3 position;
+    glm::vec3 color;
+    float range;
+    float strength;
+};
+
 class Scene {
 public:
 
@@ -37,9 +44,13 @@ public:
     unsigned int framebufferTexture;
     unsigned int rectangleVAO, rectangleVBO;
 
+    int lightCount = 0;
+    Light lights[200];
+
 private:
     void generateSkybox();
     void initCinematic();
+    void initLights();
 
 public:
     void init();

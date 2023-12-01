@@ -28,10 +28,10 @@ uniform Material material;
 
 struct Lights {
     int count;
-    vec3 positions[100];
-    vec3 colors[100];
-    float ranges[100];
-    float strengths[100];
+    vec3 positions[200];
+    vec3 colors[200];
+    float ranges[200];
+    float strengths[200];
 };
 
 uniform Lights lights;
@@ -103,12 +103,12 @@ void main() {
     // NOTE: Texture coordinate is inverted vertically for compatibility with OBJ
     vec4 out_color = texture(Texture, vec2(texCoord.x, 1.0 - texCoord.y) + TextureOffset) * combLights;
 
-    vec3 bg = vec3(15 / 255.0, 10 / 255.0, 105 / 255.0);
+    vec3 bg = vec3(15 / 255.0, 15 / 255.0, 15 / 255.0);
 
     //postprocessing
-    float dist = length(CamPos - FragPosition);
-    float mult = max(min(dist / 50, 1), -1);
+//    float dist = length(CamPos - FragPosition);
+//    float mult = max(min(dist / 50, 1), -1);
 
-    FragmentColor = out_color + (vec4(bg, 1) - out_color) * mult;
+    FragmentColor = out_color + (vec4(bg, 1) - out_color) * -1;
     FragmentColor.a = Transparency;
 }

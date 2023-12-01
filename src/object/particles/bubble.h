@@ -11,7 +11,6 @@
 
 class Bubble final : public Object {
 public:
-    std::vector<glm::vec3> BUBBLE_PATH_POINTS;
     glm::vec3 speed;
     glm::vec3 color;
     float lifeTime = 0.0f;

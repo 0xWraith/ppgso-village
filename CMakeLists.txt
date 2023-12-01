@@ -71,6 +71,7 @@ set(PPGSO_SHADER_SRC
         shader/phong_frag.glsl shader/phong_vert.glsl
         shader/skybox_frag.glsl shader/skybox_vert.glsl
         shader/framebuffer_frag.glsl shader/framebuffer_vert.glsl
+        shader/pp_bloom_frag.glsl shader/pp_noise_frag.glsl
 )
 add_resources(shaders ${PPGSO_SHADER_SRC})
 
@@ -131,6 +132,12 @@ add_executable(Village
         src/object/particles/bubble.h
         src/utils/utils.cpp
         src/utils/utils.h
+        src/object/gaslamp/gaslamp.cpp
+        src/object/gaslamp/gaslamp.h
+        src/object/gaslamp/gaslamplight.cpp
+        src/object/gaslamp/gaslamplight.h
+        src/object/particles/firefly/fireflies.cpp
+        src/object/particles/firefly/fireflies.h
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)
