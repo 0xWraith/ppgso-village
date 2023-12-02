@@ -162,6 +162,14 @@ void Scene::update(float time) {
     if (keyboard[GLFW_KEY_8]) {
         cinematic->stop();
     }
+    if (keyboard[GLFW_KEY_B] == GLFW_PRESS) {
+        Config::CONFIG_BLOOM = !Config::CONFIG_BLOOM;
+        keyboard[GLFW_KEY_B] = GLFW_RELEASE;
+    }
+    if (keyboard[GLFW_KEY_N] == GLFW_PRESS) {
+        Config::CONFIG_NOISE = !Config::CONFIG_NOISE;
+        keyboard[GLFW_KEY_N] = GLFW_RELEASE;
+    }
 
     glDepthFunc(GL_LEQUAL);
 
@@ -200,7 +208,7 @@ void Scene::render() {
 
 void Scene::init() {
     int progress = 0;
-    const int maxProgress = 26;
+    const int maxProgress = 39;
 
     generateSkybox();
     printSceneInitProgress(++progress, maxProgress);
@@ -249,53 +257,65 @@ void Scene::init() {
     std::shared_ptr<treeStruct> sand = std::make_shared<treeStruct>("sand", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                     glm::vec3 {0.0, -0.5, 90.0}, glm::vec3 {3*ppgso::PI/2, 0, 0}, glm::vec3 {0.5, 0.1, 0.5});
     sceneStructure->addChild(sand);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> depthSand1 = std::make_shared<treeStruct>("depthSand1", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                           glm::vec3 {0.0, -31.0, 133.0}, glm::vec3 {glm::radians(315.0), 0, 0}, glm::vec3 {0.5, 0.3, 0.5});
     sceneStructure->addChild(depthSand1);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> depthSand2 = std::make_shared<treeStruct>("depthSand2", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                           glm::vec3 {-100.0, -31.0, 140.5 + 21.0}, glm::vec3 {glm::radians(315.0), 0.0, glm::radians(45.0)}, glm::vec3 {0.5, 0.3, 0.5});
     sceneStructure->addChild(depthSand2);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> depthSand3 = std::make_shared<treeStruct>("depthSand3", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                           glm::vec3 {100.0, -31.0, 140.5 + 21.0}, glm::vec3 {glm::radians(315.0), 0, glm::radians(-45.0)}, glm::vec3 {0.5, 0.3, 0.5});
     sceneStructure->addChild(depthSand3);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> depthSand4 = std::make_shared<treeStruct>("depthSand4", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                           glm::vec3 {-145, -31.0, 245.5 + 21.0}, glm::vec3 {glm::radians(315.0), 0, glm::radians(90.0)}, glm::vec3 {0.5, 0.3, 0.5});
     sceneStructure->addChild(depthSand4);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> depthSand5 = std::make_shared<treeStruct>("depthSand5", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                           glm::vec3 {145, -31.0, 245.5 + 21.0}, glm::vec3 {glm::radians(315.0), 0, glm::radians(-90.0)}, glm::vec3 {0.5, 0.3, 0.5});
     sceneStructure->addChild(depthSand5);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> depthSand6 = std::make_shared<treeStruct>("depthSand6", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                           glm::vec3 {-100, -31.0, 350.5 + 21.0}, glm::vec3 {glm::radians(315.0), 0.0, glm::radians(135.0)}, glm::vec3 {0.5, 0.3, 0.5});
     sceneStructure->addChild(depthSand6);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> depthSand7 = std::make_shared<treeStruct>("depthSand7", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                           glm::vec3 {100, -31.0, 350.5 + 21.0}, glm::vec3 {glm::radians(315.0), 0, glm::radians(-135.0)}, glm::vec3 {0.5, 0.3, 0.5});
     sceneStructure->addChild(depthSand7);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> depthSand8 = std::make_shared<treeStruct>("depthSand8", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                           glm::vec3 {0.0, -31.0, 390.5 + 21.0}, glm::vec3 {glm::radians(315.0), 0, glm::radians(180.0)}, glm::vec3 {0.5, 0.3, 0.5});
     sceneStructure->addChild(depthSand8);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> water = std::make_shared<treeStruct>("water", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/water.bmp")),
                                                                      glm::vec3 {0.0, -45, 250}, glm::vec3 {3*ppgso::PI/2, 0, 0}, glm::vec3 {1, 1, 1});
     ((Terrain*)water->obj.get())->type = Terrain::TERRAIN_TYPE::WATER;
     sceneStructure->addChild(water);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> dog = std::make_shared<treeStruct>("dog", std::move(std::make_unique<Dog>("models/dog.obj", "textures/dog.bmp")),
                                                                    glm::vec3 {-20, 10, 0}, glm::vec3 {glm::radians(270.0), 0, 0}, glm::vec3 {0.2, 0.2, 0.2});
     sceneStructure->addChild(dog);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> bucket = std::make_shared<treeStruct>("bucket", std::move(std::make_unique<Bucket>("models/bucket.obj", "textures/bucket.bmp")),
                                                                       glm::vec3 {0.0, 4.2, 101.0},
                                                                       glm::vec3 {glm::radians(0.0), 0, 0},
                                                                       glm::vec3 {0.25, 0.25, 0.25});
     sceneStructure->addChild(bucket);
+    printSceneInitProgress(++progress, maxProgress);
 
     std::shared_ptr<treeStruct> waterInBucket1 = std::make_shared<treeStruct>("waterInBucket1", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/water.bmp")),
                                                                               glm::vec3 {0.0, 5.0, 101.0},
@@ -303,6 +323,7 @@ void Scene::init() {
                                                                               glm::vec3 {0.005, 0.005, 0.005});
 //    ((Terrain*)waterInBucket1->obj.get())->type = Terrain::TERRAIN_TYPE::WATER;
     sceneStructure->addChild(waterInBucket1);
+    printSceneInitProgress(++progress, maxProgress);
 
 
     if(DAY_TIME == false) {
@@ -334,6 +355,27 @@ void Scene::init() {
         gate_fourth_row->position = {66, 3.5, -56.0 + (i * 27.6)};
         objects.push_back(std::move(gate_fourth_row));
         printSceneInitProgress(++progress, maxProgress);*/
+
+        std::shared_ptr<treeStruct> gate_first_row = std::make_shared<treeStruct>("gate_first_row", std::move(std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp")),
+                                                                                  glm::vec3 {-58.0 + (i * 27.6), 3.5, -70.0},
+                                                                                  glm::vec3 {3 * ppgso::PI / 2, 0, 0},
+                                                                                  glm::vec3 {0.1, 0.1, 0.1});
+        sceneStructure->addChild(gate_first_row);
+        printSceneInitProgress(++progress, maxProgress);
+
+        std::shared_ptr<treeStruct> gate_third_row = std::make_shared<treeStruct>("gate_third_row", std::move(std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp")),
+                                                                                  glm::vec3 {-72, 3.5, -56.0 + (i * 27.6)},
+                                                                                  glm::vec3 {3 * ppgso::PI / 2, 0.0, ppgso::PI / 2},
+                                                                                  glm::vec3 {0.1, 0.1, 0.1});
+        sceneStructure->addChild(gate_third_row);
+        printSceneInitProgress(++progress, maxProgress);
+
+        std::shared_ptr<treeStruct> gate_fourth_row = std::make_shared<treeStruct>("gate_fourth_row", std::move(std::make_unique<Terrain>("models/gate.obj", "textures/gate.bmp")),
+                                                                                   glm::vec3 {66, 3.5, -56.0 + (i * 27.6)},
+                                                                                   glm::vec3 {3 * ppgso::PI / 2, 0.0, ppgso::PI / 2},
+                                                                                   glm::vec3 {0.1, 0.1, 0.1});
+        sceneStructure->addChild(gate_fourth_row);
+        printSceneInitProgress(++progress, maxProgress);
     }
 
 
@@ -606,6 +648,10 @@ void Scene::initLights() {
             glm::vec3(-45.8553, 10.7848, -32.6264),
             glm::vec3(-40.9255, 11.0233, -31.4153),
             glm::vec3(-38.0525, 12.9353, -31.4485),
+            glm::vec3(49.9253, 30.1915, -52.5548),
+            glm::vec3(47.9984, 29.212, -48.2217),
+            glm::vec3(53.2145, 30.8534, -47.8745),
+            glm::vec3(51.662, 31.6459, -50.4929),
     };
 
     for(int i = 0; i < sizeof fireFlyPositions / sizeof fireFlyPositions[0]; i++) {
@@ -620,6 +666,8 @@ void Scene::initLights() {
         sceneStructure->addChild(fire);
         lightCount++;
     }
+
+    lightCount = 10;
 }
 
 void printSceneInitProgress(int progress, int max) {

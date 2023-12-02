@@ -49,13 +49,15 @@ in vec3 FragPosition;
 in vec3 FragPositionS;
 
 // The final color
-out vec4 FragmentColor;
+
+layout (location = 0) out vec4 FragColor;
+layout (location = 1) out vec4 BrightColor;
 
 void main() {
 
     // global
-    vec3 GlobalColor = vec3(1 ,1 , 1);
-    vec4 global = vec4(0, 0, 0 ,0);
+    vec3 GlobalColor = vec3(1, 1, 1);
+    vec4 global = vec4(0, 0, 0, 0);
     float diff = 0;
     if (global_lighting_on) {
         diff = max(dot(normal4, vec4(normalize(LightDirection), 1.0f)), 0.0f);
@@ -99,16 +101,17 @@ void main() {
         }
     }
 
-    // Lookup the color in Texture on coordinates given by texCoord
     // NOTE: Texture coordinate is inverted vertically for compatibility with OBJ
     vec4 out_color = texture(Texture, vec2(texCoord.x, 1.0 - texCoord.y) + TextureOffset) * combLights;
-
     vec3 bg = vec3(15 / 255.0, 15 / 255.0, 15 / 255.0);
+    vec4 result = out_color + (vec4(bg, 1) - out_color) * -1;
 
-    //postprocessing
-//    float dist = length(CamPos - FragPosition);
-//    float mult = max(min(dist / 50, 1), -1);
+    FragColor = result;
+    FragColor.a = Transparency;
 
-    FragmentColor = out_color + (vec4(bg, 1) - out_color) * -1;
-    FragmentColor.a = Transparency;
+    float brightness = dot(result.rgb, vec3(0.2126, 0.7152, 0.0722));
+    if(brightness >= 1.0)
+        BrightColor = vec4(FragColor.rgb, 1.0);
+    else
+        BrightColor = vec4(0.0, 0.0, 0.0, 1.0);
 }

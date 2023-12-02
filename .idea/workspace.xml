@@ -23,13 +23,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/config/config.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/config/config.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shader/postprocessing_frag.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/postprocessing/postprocessing.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/postprocessing/postprocessing.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/particles/firefly/fireflies.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppgso/window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ppgso/window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/framebuffer_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/framebuffer_frag.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/framebuffer_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/framebuffer_vert.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/phong_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/phong_frag.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/pp_bloom_frag.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VillageWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/VillageWindow.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/postprocessing/bloom/bloom.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/postprocessing/bloom/bloom.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/postprocessing/noise/noise.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/postprocessing/noise/noise.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/config/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/config/config.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +154,7 @@
       <workItem from="1701293274296" duration="5935000" />
       <workItem from="1701371261495" duration="7142000" />
       <workItem from="1701384619594" duration="5901000" />
-      <workItem from="1701438089571" duration="1527000" />
+      <workItem from="1701438089571" duration="19380000" />
     </task>
     <servers />
   </component>

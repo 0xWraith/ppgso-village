@@ -71,7 +71,9 @@ set(PPGSO_SHADER_SRC
         shader/phong_frag.glsl shader/phong_vert.glsl
         shader/skybox_frag.glsl shader/skybox_vert.glsl
         shader/framebuffer_frag.glsl shader/framebuffer_vert.glsl
-        shader/pp_bloom_frag.glsl shader/pp_noise_frag.glsl
+        shader/pp_noise_frag.glsl
+        shader/postprocessing_frag.glsl
+
 )
 add_resources(shaders ${PPGSO_SHADER_SRC})
 
@@ -140,6 +142,8 @@ add_executable(Village
         src/object/particles/firefly/fireflies.h
         src/utils/config/config.cpp
         src/utils/config/config.h
+        src/postprocessing/postprocessing.cpp
+        src/postprocessing/postprocessing.h
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)

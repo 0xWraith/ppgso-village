@@ -25,11 +25,16 @@ ppgso::Window::Window(std::string title, int width, int height) : title{title}, 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  glfwWindowHint(GLFW_DECORATED, NULL);
 
 #ifndef NDEBUG
   glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 #endif
 
+  GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+//    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+//    width = mode->width;
+//    height = mode->height;
   window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
   if (!window)
     throw std::runtime_error("Failed to initialize GLFW Window!");
@@ -38,7 +43,7 @@ ppgso::Window::Window(std::string title, int width, int height) : title{title}, 
   glfwSetCursorPosCallback(window, glfw_cursor_pos_callback);
   glfwSetMouseButtonCallback(window, glfw_mouse_button_callback);
   glfwSetWindowRefreshCallback(window, glfw_window_refresh_callback);
-  glfwSetWindowMonitor(window, nullptr, 0, 30, width, height, 40);
+  glfwSetWindowMonitor(window, monitor, 0, 0, width, height, 165);
 
   glfwMakeContextCurrent(window);
 
