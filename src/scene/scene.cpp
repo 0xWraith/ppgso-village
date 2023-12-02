@@ -654,20 +654,21 @@ void Scene::initLights() {
             glm::vec3(51.662, 31.6459, -50.4929),
     };
 
-    for(int i = 0; i < sizeof fireFlyPositions / sizeof fireFlyPositions[0]; i++) {
-        lights[6 + i].position = fireFlyPositions[i];
-        lights[6 + i].color = Config::CONFIG_FIREFLY_COLOR;
-        lights[6 + i].range = 13.0f;
-        lights[6 + i].strength = 3.0f;
-
+    for(int i = 0, lightIdx = 0; i < sizeof fireFlyPositions / sizeof fireFlyPositions[0]; i++) {
         std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>("fire" + std::to_string(i), std::move(std::make_unique<FireFly>(fireFlyPositions[i])), fireFlyPositions[i], glm::vec3 {0, 0, 0}, glm::vec3 {0.1, 0.1, 0.1});
         (dynamic_cast<FireFly*>(fire->obj.get()))->lightIndex = 6 + i;
-        (dynamic_cast<FireFly*>(fire->obj.get()))->isStatic = true;
-        sceneStructure->addChild(fire);
-        lightCount++;
-    }
+        (dynamic_cast<FireFly*>(fire->obj.get()))->isStatic = Utils::randomInt(0, 1) == 1;
 
-    lightCount = 10;
+        if(dynamic_cast<FireFly*>(fire->obj.get())->isStatic) {
+            lights[6 + lightIdx].position = fireFlyPositions[i];
+            lights[6 + lightIdx].color = Config::CONFIG_FIREFLY_COLOR;
+            lights[6 + lightIdx].range = 13.0f;
+            lights[6 + lightIdx].strength = 3.0f;
+            lightIdx++;
+            lightCount++;
+        }
+        sceneStructure->addChild(fire);
+    }
 }
 
 void printSceneInitProgress(int progress, int max) {
