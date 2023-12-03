@@ -89,7 +89,7 @@ void PostProcessing::init() {
 void PostProcessing::render() {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     bool horizontal = true;
-    unsigned int amount = 15;
+    unsigned int amount = 10;
     shaderBlur->use();
     for (unsigned int i = 0, firstIteration = 1; i < amount; i++)
     {

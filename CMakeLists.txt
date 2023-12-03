@@ -144,6 +144,8 @@ add_executable(Village
         src/utils/config/config.h
         src/postprocessing/postprocessing.cpp
         src/postprocessing/postprocessing.h
+        src/object/particles/fire/fire.cpp
+        src/object/particles/fire/fire.h
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)

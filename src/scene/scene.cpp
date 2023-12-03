@@ -20,6 +20,7 @@
 #include "src/object/particles/firefly/fireflies.h"
 #include "src/utils/config/config.h"
 #include "src/utils/utils.h"
+#include "src/object/particles/fire/fire.h"
 
 void printSceneInitProgress(int progress, int max);
 
@@ -112,16 +113,21 @@ float skyboxVertices[] = {
         1.0f, -1.0f,  1.0f
 };
 
+float fireParticleSpawnTime = 0.0f;
+
 void Scene::update(float time) {
-    auto i = std::begin(objects);
-    while (i != std::end(objects)) {
-        Object* obj = i->get();
-        if (obj->update(*this, time)) {
-            ++i;
-        } else {
-            i = objects.erase(i);
-        }
+
+    fireParticleSpawnTime += time;
+
+    if (fireParticleSpawnTime >= 0.2f) {
+        fireParticleSpawnTime = 0.0f;
+
+        std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>("fire_" + std::to_string(Utils::randomInt(1, 1000)), std::move(std::make_unique<Fire>(glm::vec3(Utils::randomInt(-2, 2), Utils::randomInt(1, 4), Utils::randomInt(-2, 2)),glm::vec3 {1.0f, 0.0f, 0.0f})),
+                                                                         glm::vec3 {0,3,0}, glm::vec3 {0, 0, 0}, glm::vec3 {0.05, 0.15, 0.05});
+        sceneStructure->addChild(fire);
     }
+
+
     sceneStructure->update(*this, time);
 
     float speed = time * CAMERA_SPEED;
@@ -196,11 +202,6 @@ void Scene::update(float time) {
 }
 
 void Scene::render() {
-
-    for (auto& obj: objects) {
-        obj->render(*this);
-    }
-
     if(sceneStructure) {
         sceneStructure->render(*this);
     }
@@ -208,15 +209,12 @@ void Scene::render() {
 
 void Scene::init() {
     int progress = 0;
-    const int maxProgress = 39;
+    const int maxProgress = 38;
 
     generateSkybox();
     printSceneInitProgress(++progress, maxProgress);
 
     initCinematic();
-    printSceneInitProgress(++progress, maxProgress);
-
-    objects.clear();
     printSceneInitProgress(++progress, maxProgress);
 
     camera = std::make_unique<Camera>();
@@ -657,7 +655,7 @@ void Scene::initLights() {
     for(int i = 0, lightIdx = 0; i < sizeof fireFlyPositions / sizeof fireFlyPositions[0]; i++) {
         std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>("fire" + std::to_string(i), std::move(std::make_unique<FireFly>(fireFlyPositions[i])), fireFlyPositions[i], glm::vec3 {0, 0, 0}, glm::vec3 {0.1, 0.1, 0.1});
         (dynamic_cast<FireFly*>(fire->obj.get()))->lightIndex = 6 + i;
-        (dynamic_cast<FireFly*>(fire->obj.get()))->isStatic = Utils::randomInt(0, 1) == 1;
+        (dynamic_cast<FireFly*>(fire->obj.get()))->isStatic = true;
 
         if(dynamic_cast<FireFly*>(fire->obj.get())->isStatic) {
             lights[6 + lightIdx].position = fireFlyPositions[i];

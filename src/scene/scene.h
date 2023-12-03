@@ -29,7 +29,6 @@ public:
     glm::vec3 LIGHT_DIRECTION = {0.25 , 1, 0.5};
 
     constexpr static const float CAMERA_SPEED = 15.0f;
-    std::list<std::unique_ptr<Object>> objects;
     std::shared_ptr<treeStruct> sceneStructure;
     std::unique_ptr<Camera> camera;
     std::unique_ptr<FishSpawner> fishSpawner;
