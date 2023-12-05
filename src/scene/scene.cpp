@@ -455,25 +455,22 @@ void Scene::generateSkybox() {
 void Scene::initLights() {
 
     if (DAY_TIME == true) {
-        lights[0].position = {666.655, 1654.05, 967.464};
-        lights[0].color = {200 / 255.0, 200 / 255.0, 200 / 255.0};
-        lights[0].range = 5000.0f;
-        lights[0].strength = 5.f;
-        lightCount++;
+        lights[lightCount].position = {666.655, 1654.05, 967.464};
+        lights[lightCount].color = {200 / 255.0, 200 / 255.0, 200 / 255.0};
+        lights[lightCount].range = 5000.0f;
+        lights[lightCount++].strength = 5.f;
         return;
     }
 
-    lights[0].position = {666.655, 1654.05, 967.464};
-    lights[0].color = {29 / 255.0, 78 / 255.0, 105 / 255.0};
-    lights[0].range = 5000.0f;
-    lights[0].strength = 3.5f;
-    lightCount++;
+    lights[lightCount].position = {666.655, 1654.05, 967.464};
+    lights[lightCount].color = {29 / 255.0, 78 / 255.0, 105 / 255.0};
+    lights[lightCount].range = 5000.0f;
+    lights[lightCount++].strength = 3.5f;
 
-    lights[1].position = glm::vec3(633.615, 1729.08, 979.094);
-    lights[1].color = {255 / 255.0, 255 / 255.0, 255 / 255.0};
-    lights[1].range = 300.0f;
-    lights[1].strength = 10.5f;
-    lightCount++;
+    lights[lightCount].position = glm::vec3(633.615, 1729.08, 979.094);
+    lights[lightCount].color = {255 / 255.0, 255 / 255.0, 255 / 255.0};
+    lights[lightCount].range = 300.0f;
+    lights[lightCount++].strength = 10.5f;
 
     glm::vec3 gasLampPositions[] = {
             glm::vec3(-35.0, 5, -30.0),
@@ -484,19 +481,17 @@ void Scene::initLights() {
 
     for(int i = 0; i < sizeof gasLampPositions / sizeof gasLampPositions[0]; i++) {
 
-        lights[2 + i].position = gasLampPositions[i];
-        lights[2 + i].position.y += 2.5;
-        lights[2 + i].color = {255 / 255.0, 136 / 255.0, 49 / 255.0};
-        lights[2 + i].range = 40.0f;
-        lights[2 + i].strength = 10.0f;
+        lights[lightCount].position = gasLampPositions[i];
+        lights[lightCount].position.y += 2.5;
+        lights[lightCount].color = {255 / 255.0, 136 / 255.0, 49 / 255.0};
+        lights[lightCount].range = 40.0f;
+        lights[lightCount++].strength = 10.0f;
 
         std::shared_ptr<treeStruct> gaslamp = std::make_shared<treeStruct>("gaslamp" + std::to_string(i), std::move(std::make_unique<Terrain>("models/lamp.obj", "textures/lamp.bmp")),gasLampPositions[i], glm::vec3 {0, 0, 0}, glm::vec3 {0.5, 0.5, 0.5});
         sceneStructure->addChild(gaslamp);
 
         std::shared_ptr<treeStruct> gaslampLight = std::make_shared<treeStruct>("gaslamplight" + std::to_string(i), std::move(std::make_unique<GasLampLight>(lights[2 + i].color)),glm::vec3 {0, 2.5, 0}, glm::vec3 {0, 0, 0}, glm::vec3 {2, 2, 2});
         sceneStructure->addObject("gaslamp" + std::to_string(i), gaslampLight);
-
-        lightCount++;
     }
 
     glm::vec3 fireFlyPositions[] = {
@@ -652,18 +647,16 @@ void Scene::initLights() {
             glm::vec3(51.662, 31.6459, -50.4929),
     };
 
-    for(int i = 0, lightIdx = 0; i < sizeof fireFlyPositions / sizeof fireFlyPositions[0]; i++) {
+    for(int i = 0; i < sizeof fireFlyPositions / sizeof fireFlyPositions[0]; i++) {
         std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>("fire" + std::to_string(i), std::move(std::make_unique<FireFly>(fireFlyPositions[i])), fireFlyPositions[i], glm::vec3 {0, 0, 0}, glm::vec3 {0.1, 0.1, 0.1});
         (dynamic_cast<FireFly*>(fire->obj.get()))->lightIndex = 6 + i;
-        (dynamic_cast<FireFly*>(fire->obj.get()))->isStatic = true;
+        (dynamic_cast<FireFly*>(fire->obj.get()))->isStatic =true;
 
         if(dynamic_cast<FireFly*>(fire->obj.get())->isStatic) {
-            lights[6 + lightIdx].position = fireFlyPositions[i];
-            lights[6 + lightIdx].color = Config::CONFIG_FIREFLY_COLOR;
-            lights[6 + lightIdx].range = 13.0f;
-            lights[6 + lightIdx].strength = 3.0f;
-            lightIdx++;
-            lightCount++;
+            lights[lightCount].position = fireFlyPositions[i];
+            lights[lightCount].color = Config::CONFIG_FIREFLY_COLOR;
+            lights[lightCount].range = 13.0f;
+            lights[lightCount++].strength = 3.0f;
         }
         sceneStructure->addChild(fire);
     }
