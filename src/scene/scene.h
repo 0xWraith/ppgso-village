@@ -24,9 +24,11 @@ struct Light {
 class Scene {
 public:
 
-    bool DAY_TIME = false;
+    bool DAY_TIME = true;
     bool GLOBAL_LIGHTING_ON = true;
     glm::vec3 LIGHT_DIRECTION = {0.25 , 1, 0.5};
+
+    constexpr static const int MAX_WHEATS = 150;             //min 20
 
     constexpr static const float CAMERA_SPEED = 15.0f;
     std::shared_ptr<treeStruct> sceneStructure;
@@ -50,6 +52,7 @@ private:
     void generateSkybox();
     void initCinematic();
     void initLights();
+    void generateWheatField(std::shared_ptr<treeStruct> fieldStruct);
 
 public:
     void init();

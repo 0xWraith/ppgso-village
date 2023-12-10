@@ -13,8 +13,19 @@ treeStruct::treeStruct(std::string id, std::unique_ptr<Object> obj, glm::vec3 po
     this->obj->rotation = {0,0,0};
 }
 
+treeStruct::treeStruct(std::string id, std::unique_ptr<Object> obj, glm::vec3 pos): treeStruct(id) {
+    this->obj = std::move(obj);
+    this->obj->position = pos;
+}
+
 treeStruct::treeStruct(std::string id, std::unique_ptr<Object> obj): treeStruct(id) {
     this->obj = std::move(obj);
+    this->positionSet = false;
+}
+
+treeStruct::treeStruct(std::string id, glm::vec3 pos): treeStruct(id) {
+    this->position = pos;
+    this->positionSet = true;
 }
 
 treeStruct::treeStruct(std::string id) {
@@ -34,7 +45,11 @@ void treeStruct::update(Scene &scene, float dt) {
     if(obj) {
         if (parent && parent->obj) {
             this->obj->parentModelMatrix = this->parent->obj->modelMatrix;
-        } else {
+        }
+        else if (parent && parent->positionSet) {
+            this->obj->parentModelMatrix = glm::translate(glm::mat4(1), this->parent->position);
+        }
+        else {
             this->obj->parentModelMatrix = glm::mat4{1};
         }
     }

@@ -11,6 +11,7 @@ class Utils {
 public:
     static glm::vec3 getPointTowards(glm::vec3 position, float angle, float distance);
     static int randomInt(int min, int max);
+    static int randomNumber(int min, int max);
 };
 
 

@@ -24,6 +24,7 @@ Cat::Cat(const std::string model, const std::string texture) {
 }
 
 bool Cat::update(Scene &scene, float dt) {
+    std::cout << "CAT ON X:" << this->position.x << " Y:" << this->position.y << " Z:" << this->position.z << std::endl;
 
     float speed = 0.8f;
     animationTime += dt;

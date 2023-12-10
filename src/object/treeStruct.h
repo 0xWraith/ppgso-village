@@ -14,9 +14,13 @@ public:
     treeStruct(std::string id, std::unique_ptr<Object> obj, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
     treeStruct(std::string id, std::unique_ptr<Object> obj, glm::vec3 pos, glm::vec3 scale);
     treeStruct(std::string id, std::unique_ptr<Object> obj);
+    treeStruct(std::string id, std::unique_ptr<Object> obj, glm::vec3 pos);
     treeStruct(std::string id);
+    treeStruct(std::string id, glm::vec3 pos);
 
     std::string id;
+    glm::vec3 position;
+    bool positionSet;
     std::unique_ptr<Object> obj;
     std::shared_ptr<treeStruct> parent;
     std::shared_ptr<treeStruct> child;

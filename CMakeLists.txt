@@ -87,6 +87,8 @@ add_library(ppgso STATIC
         ppgso/image_raw.cpp
         ppgso/texture.cpp
         ppgso/window.cpp
+        src/object/scarecrow/scarecrow.cpp
+        src/object/scarecrow/scarecrow.h
 )
 
 # Make sure GLM uses radians and GLEW is a static library
@@ -146,6 +148,14 @@ add_executable(Village
         src/postprocessing/postprocessing.h
         src/object/particles/fire/fire.cpp
         src/object/particles/fire/fire.h
+        src/object/fire_pit/fire_pit.h
+        src/object/fire_pit/fire_pit.cpp
+        src/object/tree_log/tree_log.h
+        src/object/tree_log/tree_log.cpp
+        src/object/plant/plant.cpp
+        src/object/plant/plant.h
+        src/object/wheat/wheat.h
+        src/object/wheat/wheat.cpp
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)

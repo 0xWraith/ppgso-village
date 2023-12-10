@@ -21,8 +21,15 @@
 #include "src/utils/config/config.h"
 #include "src/utils/utils.h"
 #include "src/object/particles/fire/fire.h"
+#include "src/object/fire_pit/fire_pit.h"
+#include "src/object/tree_log/tree_log.h"
+#include "src/object/plant/plant.h"
+#include "src/object/wheat/wheat.h"
+#include "src/object/scarecrow/scarecrow.h"
+
 
 void printSceneInitProgress(int progress, int max);
+void generateWheatField(std::shared_ptr<treeStruct> fieldStruct);
 
 float camPosX, camPosY, camPosZ;
 
@@ -123,7 +130,7 @@ void Scene::update(float time) {
         fireParticleSpawnTime = 0.0f;
 
         std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>("fire_" + std::to_string(Utils::randomInt(1, 1000)), std::move(std::make_unique<Fire>(glm::vec3(Utils::randomInt(-2, 2), Utils::randomInt(1, 4), Utils::randomInt(-2, 2)),glm::vec3 {1.0f, 0.0f, 0.0f})),
-                                                                         glm::vec3 {0,3,0}, glm::vec3 {0, 0, 0}, glm::vec3 {0.05, 0.15, 0.05});
+                                                                        glm::vec3  {-43.5,5.7,35.5}, glm::vec3 {0, 0, 0}, glm::vec3 {0.05, 0.15, 0.05});
         sceneStructure->addChild(fire);
     }
 
@@ -376,6 +383,63 @@ void Scene::init() {
         printSceneInitProgress(++progress, maxProgress);
     }
 
+    std::shared_ptr<treeStruct> firePit = std::make_shared<treeStruct>("fire_pit", std::move(std::make_unique<FirePit>()),
+                                                                        glm::vec3  {-43.5,5.35,35.5},
+                                                                        glm::vec3  {0,0,0},
+                                                                        glm::vec3 {3,4.5,3});
+    std::shared_ptr<treeStruct> treeLog1 = std::make_shared<treeStruct>("log1", std::move(std::make_unique<TreeLog>()),
+                                                                        glm::vec3 {0,.05,0},
+                                                                        glm::vec3 {0,.02,14},
+                                                                        glm::vec3 {0.5,1,1});
+    std::shared_ptr<treeStruct> treeLog2 = std::make_shared<treeStruct>("log2", std::move(std::make_unique<TreeLog>()),
+                                                                        glm::vec3 {0,.07,0},
+                                                                        glm::vec3 {.5,.75,1});
+    firePit->addChild(treeLog1);
+    firePit->addChild(treeLog2);
+    sceneStructure->addChild(firePit);
+    printSceneInitProgress(++progress, maxProgress);
+
+    std::shared_ptr<treeStruct> field1 = std::make_shared<treeStruct>("field1", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
+                                                                     glm::vec3 {-43.1071, 4, 10.6743}, glm::vec3 {3*ppgso::PI/2, 3*ppgso::PI/2, 0}, glm::vec3 {0.015, 0.05, 0.25});
+    sceneStructure->addChild(field1);
+
+    std::shared_ptr<treeStruct> plant1 = std::make_shared<treeStruct>("plant1", std::move(std::make_unique<Plant>()),
+                                                                     glm::vec3 {-36.1071, 6, 9.5}, glm::vec3 {0,0, 6*ppgso::PI/2}, glm::vec3 {7,25,7});
+
+    std::shared_ptr<treeStruct> plant2 = std::make_shared<treeStruct>("plant2", std::move(std::make_unique<Plant>()),
+                                                                     glm::vec3 {-50.1071, 6, 11.5}, glm::vec3 {0,0,0}, glm::vec3 {7,35,7});
+
+    sceneStructure->addChild(plant1);
+    sceneStructure->addChild(plant2);
+    printSceneInitProgress(++progress, maxProgress);
+
+    std::shared_ptr<treeStruct> field2 = std::make_shared<treeStruct>("field2", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
+                                                                     glm::vec3 {-43.1071, 4.5, 16.6743}, glm::vec3 {3*ppgso::PI/2, 3*ppgso::PI/2, 0}, glm::vec3 {0.015, 0.05, 0.25});
+    sceneStructure->addChild(field2);
+    std::shared_ptr<treeStruct> plant3 = std::make_shared<treeStruct>("plant3", std::move(std::make_unique<Plant>()),
+                                                                      glm::vec3 {-50.1071, 6, 15.5}, glm::vec3 {0,0,0}, glm::vec3 {7,30.5,7});
+    std::shared_ptr<treeStruct> plant4 = std::make_shared<treeStruct>("plant4", std::move(std::make_unique<Plant>()),
+                                                                      glm::vec3 {-36.1071, 6, 17.5}, glm::vec3 {0,0,6*ppgso::PI/2}, glm::vec3 {7,36.5,7});
+    sceneStructure->addChild(plant3);
+    sceneStructure->addChild(plant4);
+    printSceneInitProgress(++progress, maxProgress);
+
+    std::shared_ptr<treeStruct> field3 = std::make_shared<treeStruct>("field3", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
+                                                                     glm::vec3 {-43.1071, 4.25, 22.6743}, glm::vec3 {3*ppgso::PI/2, 3*ppgso::PI/2, 0}, glm::vec3 {0.015, 0.05, 0.25});
+    sceneStructure->addChild(field3);
+    std::shared_ptr<treeStruct> plant5 = std::make_shared<treeStruct>("plant5", std::move(std::make_unique<Plant>()),
+                                                                      glm::vec3 {-50.1071, 6, 21.5}, glm::vec3 {0,0,0}, glm::vec3 {7,28,7});
+    std::shared_ptr<treeStruct> plant6 = std::make_shared<treeStruct>("plant6", std::move(std::make_unique<Plant>()),
+                                                                      glm::vec3 {-36.1071, 6, 23.5}, glm::vec3 {0,0,6*ppgso::PI/2}, glm::vec3 {7,26.5,7});
+    sceneStructure->addChild(plant5);
+    sceneStructure->addChild(plant6);
+    printSceneInitProgress(++progress, maxProgress);
+
+    std::shared_ptr<treeStruct> wheat_field = std::make_shared<treeStruct>("wheat_field", glm::vec3 {30,1,40});
+    sceneStructure->addChild(wheat_field);
+    generateWheatField(wheat_field);
+
+    printSceneInitProgress(++progress, maxProgress);
 
     std::cout << "Scene init done" << std::endl;
 }
@@ -667,4 +731,33 @@ void printSceneInitProgress(int progress, int max) {
         std::cout << "\r";
     }
     std::cout << "Scene init progress: " << std::round(progress * 100.0 / max) << "%%" << std::endl;
+}
+
+void Scene::generateWheatField(std::shared_ptr<treeStruct> fieldStruct) {
+    std::cout << "Generating wheat field..." << std::endl;
+    std::shared_ptr<treeStruct> field_ground = std::make_shared<treeStruct>("field_ground", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
+                                                                      glm::vec3 {0, 3.7, 0}, glm::vec3 {3*ppgso::PI/2, 0, 0}, glm::vec3 {0.15,0.15,0.15});
+    fieldStruct->addChild(field_ground);
+
+    std::shared_ptr<treeStruct> scarecrow = std::make_shared<treeStruct>("scarecrow", std::move(std::make_unique<Scarecrow>()), glm::vec3 {0,9,0});
+    fieldStruct->addChild(scarecrow);
+
+    int wheats = 0;
+    glm::vec3 oldpos = {0,5.8,0};
+    while (wheats < MAX_WHEATS) {
+        glm::vec3 newpos = {Utils::randomNumber(2, 6), 0, Utils::randomNumber(2, 6)};
+        newpos = oldpos + newpos;
+        if (abs(newpos.x) <= 18 && abs(newpos.z) <= 18) {
+            std::shared_ptr<treeStruct> wheat = std::make_shared<treeStruct>("wheat", std::move(std::make_unique<Wheat>()),
+                                                                                 newpos, glm::vec3 {3*ppgso::PI/2,0,0}, glm::vec3 {0.07, 0.07, (float)Utils::randomInt(10,14)/100});
+            fieldStruct->addChild(wheat);
+            wheats++;
+            oldpos = newpos;
+            if (wheats % (MAX_WHEATS / 20) == 0) {
+                std::cout << '*';
+            }
+        }
+    }
+    std::cout << std::endl;
+
 }
