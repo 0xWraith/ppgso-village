@@ -5,12 +5,12 @@
 
 #include "src/scene/Scene.h"
 #include "src/object/object.h"
+#include "src/utils/utils.h"
 
 class Cat final : public Object {
 public:
     std::unique_ptr<ppgso::Texture> shadow_map;
-    float animationTime = 0;
-    int animationStep = 0;
+    bool jumping = false;
 public:
     Cat(const std::string model, const std::string texture);
     bool update(Scene &scene, float dt) override;

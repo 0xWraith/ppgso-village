@@ -24,10 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VillageWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/VillageWindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/config/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/config/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/cat/cat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/cat/cat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/cat/cat.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/cat/cat.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,11 +112,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ppgso" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ppgso" TARGET_NAME="ppgso" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -185,10 +178,9 @@
     <option name="version" value="3" />
   </component>
   <component name="VCPKGProject">
-    <isAutomaticEditVcpkgJson value="true" />
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
-    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

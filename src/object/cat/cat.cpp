@@ -5,8 +5,6 @@
 #include "shaders/phong_vert_glsl.h"
 #include <glm/gtc/random.hpp>
 
-
-
 Cat::Cat(const std::string model, const std::string texture) {
     position = {-11.8634, 2.17891, 14.3175};
     rotation = {3*ppgso::PI/2, 0, 0};
@@ -24,6 +22,17 @@ Cat::Cat(const std::string model, const std::string texture) {
 }
 
 bool Cat::update(Scene &scene, float dt) {
+
+
+    float high = (float)sin(glfwGetTime()) * 2.5;
+    if(high >= 0) {
+        position.y = high + 25.f;
+    }
+    else {
+        position.y = 25.f;
+        jumping = false;
+    }
+
     generateModelMatrix();
     return true;
 }
