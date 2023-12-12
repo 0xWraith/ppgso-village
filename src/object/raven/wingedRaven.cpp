@@ -40,7 +40,7 @@ bool WingedRaven::update(Scene &scene, float dt) {
             speed.z = -4;
         }
         if (position.z < -100) {
-            speed.z = -4;
+            speed.z = 4;
         }
 
         glm::vec3 vec1 = glm::normalize(glm::vec3 {0,0,1});

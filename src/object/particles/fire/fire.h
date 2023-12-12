@@ -9,7 +9,7 @@ public:
     glm::vec3 speed;
     glm::vec3 color;
     float lifeTime = 0.0f;
-    Fire(glm::vec3 speed, glm::vec3 color);
+    Fire(glm::vec3 speed, int color, float lifetime);
     bool update(Scene &scene, float dt) override;
     void render(Scene &scene) override;
 };

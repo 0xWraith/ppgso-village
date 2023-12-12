@@ -6,10 +6,20 @@
 #include "src/utils/utils.h"
 #include "src/utils/config/config.h"
 
-Fire::Fire(glm::vec3 speed, glm::vec3 color) {
+Fire::Fire(glm::vec3 speed, int color, float lifetime) {
     this->speed = speed;
-    this->color = Config::CONFIG_FIRE_PARTICLE_COLOR;
-    this->lifeTime = Utils::randomInt(1, 4);
+    if (color == 1) {
+        this->color = Config::CONFIG_FIRE_PARTICLE_COLOR;
+    }
+    else if (color == 2) {
+        this->color = Config::CONFIG_FIRE2_PARTICLE_COLOR;
+    }
+    else if (color == 3) {
+        this->color = Config::CONFIG_FIRE3_PARTICLE_COLOR;
+    }
+
+
+    this->lifeTime = lifetime;
     if (!shader) {
         shader = std::make_unique<ppgso::Shader>(color_vert_glsl, color_frag_glsl);
     }
@@ -30,6 +40,7 @@ bool Fire::update(Scene &scene, float dt) {
     position.y += speed.y * dt;
     position.z += speed.z * dt * 0.15f;
 
+    position = position + glm::vec3 (0.65,0,0) * dt;
     //If life time is less than 0, remove particle
     if (lifeTime <= 0.0f) {
         return false;

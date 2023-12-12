@@ -133,9 +133,30 @@ void Scene::update(float time) {
     if (fireParticleSpawnTime >= 0.2f) {
         fireParticleSpawnTime = 0.0f;
 
-        std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>("fire_" + std::to_string(Utils::randomInt(1, 1000)), std::move(std::make_unique<Fire>(glm::vec3(Utils::randomInt(-2, 2), Utils::randomInt(1, 4), Utils::randomInt(-2, 2)),glm::vec3 {1.0f, 0.0f, 0.0f})),
-                                                                        glm::vec3  {-43.5,5.7,35.5}, glm::vec3 {0, 0, 0}, glm::vec3 {0.05, 0.15, 0.05});
-        sceneStructure->addChild(fire);
+        for (int i = 0; i < 8; i++) {
+            std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>(
+                    "fire_" + std::to_string(Utils::randomInt(1, 1000)), std::move(std::make_unique<Fire>(
+                            glm::vec3(Utils::randomInt(-2, 2), Utils::randomInt(1, 4), Utils::randomInt(-2, 2)),
+                            1, Utils::randomInt(1, 4))),
+                    glm::vec3{-43.5, 5.7, 35.5}, glm::vec3{0, 0, 0}, glm::vec3{0.05, 0.15, 0.05});
+            sceneStructure->addChild(fire);
+        }
+        for (int i = 0; i < 3; i++) {
+            std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>(
+                    "fire_" + std::to_string(Utils::randomInt(1, 1000)), std::move(std::make_unique<Fire>(
+                            glm::vec3(Utils::randomInt(-3, 3), Utils::randomInt(1, 2), Utils::randomInt(-3, 3)),
+                            2, Utils::randomInt(1, 2))),
+                    glm::vec3{-43.5, 5.7, 35.5}, glm::vec3{0, 0, 0}, glm::vec3{0.45, 0.45, 0.45});
+            sceneStructure->addChild(fire);
+        }
+        for (int i = 0; i < 2; i++) {
+            std::shared_ptr<treeStruct> fire = std::make_shared<treeStruct>(
+                    "fire_" + std::to_string(Utils::randomInt(1, 1000)), std::move(std::make_unique<Fire>(
+                            glm::vec3(Utils::randomInt(-3, 3), Utils::randomInt(1, 2), Utils::randomInt(-3, 3)),
+                            3, 0.6)),
+                    glm::vec3{-43.5, 5.7, 35.5}, glm::vec3{0, 0, 0}, glm::vec3{0.6, 1, 0.6});
+            sceneStructure->addChild(fire);
+        }
     }
 
 
@@ -448,7 +469,8 @@ void Scene::init() {
 
 
 
-    std::shared_ptr<treeStruct> pickaxe = std::make_shared<treeStruct>("pickaxe", std::move(std::make_unique<Pickaxe>()));
+    std::shared_ptr<treeStruct> pickaxe = std::make_shared<treeStruct>("pickaxe", std::move(std::make_unique<Pickaxe>()),
+                                                                       glm::vec3 {-36.1071, 9.85, 24.2}, glm::vec3 {0.15,-2.7,5*ppgso::PI/2}, glm::vec3 {5,5,5});
     sceneStructure->addChild(pickaxe);
     printSceneInitProgress(++progress, maxProgress);
 

@@ -17,7 +17,9 @@ bool Bubble::update(Scene &scene, float dt) {
     }
 
     glm::vec3 gravity = glm::vec3{0,-9.8,0};
+    glm::vec3 wind = glm::vec3{5,0,0};
     speed += ( (gravity) * dt);
+    speed += ( (wind) * dt);
     position += speed * dt;
 
     generateModelMatrix();

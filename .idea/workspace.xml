@@ -23,18 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/object/pickaxe/pickaxe.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/pickaxe/pickaxe.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/raven/raven.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/raven/raven.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/raven/wingedRaven.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/raven/wingedRaven.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/spiderman/spiderman.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/spiderman/spiderman.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/particles/bubble.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/particles/bubble.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/particles/fire/fire.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/particles/fire/fire.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/particles/fire/fire.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/particles/fire/fire.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/raven/wingedRaven.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/raven/wingedRaven.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/config/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/config/config.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +177,7 @@
       <workItem from="1702226443883" duration="4195000" />
       <workItem from="1702230661293" duration="2412000" />
       <workItem from="1702237166495" duration="206000" />
-      <workItem from="1702332329308" duration="16943000" />
+      <workItem from="1702332329308" duration="23343000" />
     </task>
     <servers />
   </component>
