@@ -120,9 +120,6 @@ add_executable(Village
         src/object/cat/cat.cpp
         src/object/dog/dog.cpp
         src/object/fish/fish.cpp
-        src/object/garden/garden.cpp
-        src/object/grandpa/grandpa.cpp
-        src/object/grandma/grandma.cpp
         src/object/tree/tree.cpp
         src/object/treeStruct.cpp
         src/object/fish/fishSpawner.cpp

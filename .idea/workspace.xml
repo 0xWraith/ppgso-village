@@ -23,15 +23,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/object/raven/jumpingRaven.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/raven/jumpingRaven.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/raven/staticRaven.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/raven/staticRaven.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/raven/wingedRaven.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/raven/wingedRaven.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/treeStruct.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/treeStruct.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/cat/cat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/cat/cat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/dog/dog.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/dog/dog.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/dog/dog.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/dog/dog.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/garden/garden.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/garden/garden.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/grandma/grandma.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/grandma/grandma.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/grandpa/grandpa.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/grandpa/grandpa.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/raven/raven.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/raven/raven.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,27 +86,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "CMake Application.Village.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "dev",
-    "last_opened_file_path": "C:/Users/marek/Desktop/fiit stuba/5. semester/PPGSO/projekt/github/ppgso-village5/ppgso-village/CMakeLists.txt",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "structure.view.defaults.are.configured": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.Village.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marek/Desktop/fiit stuba/5. semester/PPGSO/projekt/github/ppgso-village5/ppgso-village/CMakeLists.txt&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\ppgso-village\shader" />
@@ -113,12 +119,12 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.Village">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Village" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ppgso" TARGET_NAME="Village" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ppgso" RUN_TARGET_NAME="Village">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Village" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ppgso" TARGET_NAME="Village" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ppgso" RUN_TARGET_NAME="Village">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -189,9 +195,10 @@
     <option name="version" value="3" />
   </component>
   <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="true" />
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
-    <isAutomaticReloadCMake value="true" />
+    <isAutomaticFoundErrors value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

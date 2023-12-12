@@ -84,6 +84,13 @@ bool Raven::update(Scene &scene, float dt) {
         position.z = -20;
     }
 
+    auto dogPosition = scene.sceneStructure->getStructById("dog")->position;
+    auto dogDistance = glm::distance(position, dogPosition);
+
+    if (dogDistance < 15) {
+        jumping = true;
+    }
+
     if (jumping) {
         float high = (float)sin(glfwGetTime()) * 1.7;
         if(high > 0) {

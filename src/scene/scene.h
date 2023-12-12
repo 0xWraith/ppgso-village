@@ -24,11 +24,11 @@ struct Light {
 class Scene {
 public:
 
-    bool DAY_TIME = true;
+    bool DAY_TIME = false;
     bool GLOBAL_LIGHTING_ON = true;
     glm::vec3 LIGHT_DIRECTION = {0.25 , 1, 0.5};
 
-    constexpr static const int MAX_WHEATS = 20;             //min 20
+    constexpr static const int MAX_WHEATS = 20;
     constexpr static const int RAVENS = 13;
     constexpr static const int FLYING_RAVENS = 5;
 
