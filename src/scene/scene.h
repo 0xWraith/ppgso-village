@@ -13,7 +13,7 @@
 #include <vector>
 #include <list>
 #include <map>
-
+#include <src/utils/config/config.h>
 struct Light {
     glm::vec3 position;
     glm::vec3 color;
@@ -24,11 +24,11 @@ struct Light {
 class Scene {
 public:
 
-    bool DAY_TIME = false;
+    bool DAY_TIME = Config::DAY_TIME;
     bool GLOBAL_LIGHTING_ON = true;
     glm::vec3 LIGHT_DIRECTION = {0.25 , 1, 0.5};
 
-    constexpr static const int MAX_WHEATS = 20;
+    constexpr static const int MAX_WHEATS = 80;
     constexpr static const int RAVENS = 13;
     constexpr static const int FLYING_RAVENS = 5;
 
@@ -42,10 +42,6 @@ public:
     unsigned int cubeVAO, cubeVBO;
     std::unique_ptr<ppgso::Shader> skyboxShader;
     unsigned int cubemapTexture;
-
-    unsigned int FBO;
-    unsigned int framebufferTexture;
-    unsigned int rectangleVAO, rectangleVBO;
 
     int lightCount = 0;
     Light lights[200];

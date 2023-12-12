@@ -10,6 +10,7 @@
 
 class Config {
 public:
+    static bool DAY_TIME;
     static bool CONFIG_BLOOM;
     static bool CONFIG_NOISE;
     constexpr static const glm::vec3 CONFIG_FIRE_PARTICLE_COLOR = glm::vec3(255 / 255.0f, 116 / 255.0f, 46 / 255.0f);

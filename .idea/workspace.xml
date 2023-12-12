@@ -24,20 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a5bb798e-6947-4ac2-b50f-b188b401fc69" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/cinematic/cinematic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/cat/cat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/cat/cat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/dog/dog.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/dog/dog.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/dog/dog.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/dog/dog.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/garden/garden.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/garden/garden.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/grandma/grandma.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/grandma/grandma.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/grandpa/grandpa.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/grandpa/grandpa.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/raven/raven.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/raven/raven.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VillageWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/VillageWindow.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/config/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/config/config.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

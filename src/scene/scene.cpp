@@ -665,16 +665,15 @@ void Scene::initLights() {
 
     if (DAY_TIME == true) {
         lights[lightCount].position = {666.655, 1654.05, 967.464};
-        lights[lightCount].color = {200 / 255.0, 200 / 255.0, 200 / 255.0};
+        lights[lightCount].color = {130 / 255.0, 180 / 255.0, 255 / 255.0};
         lights[lightCount].range = 5000.0f;
         lights[lightCount++].strength = 5.f;
-        return;
+    } else {
+        lights[lightCount].position = {666.655, 1654.05, 967.464};
+        lights[lightCount].color = {29 / 255.0, 78 / 255.0, 105 / 255.0};
+        lights[lightCount].range = 5000.0f;
+        lights[lightCount++].strength = 3.5f;
     }
-
-    lights[lightCount].position = {666.655, 1654.05, 967.464};
-    lights[lightCount].color = {29 / 255.0, 78 / 255.0, 105 / 255.0};
-    lights[lightCount].range = 5000.0f;
-    lights[lightCount++].strength = 3.5f;
 
     lights[lightCount].position = glm::vec3(633.615, 1729.08, 979.094);
     lights[lightCount].color = {255 / 255.0, 255 / 255.0, 255 / 255.0};

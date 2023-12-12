@@ -10,6 +10,7 @@
 
 bool Config::CONFIG_BLOOM = true;
 bool Config::CONFIG_NOISE = true;
+bool Config::DAY_TIME = true;
 
 class VillageWindow : public ppgso::Window {
 public:
