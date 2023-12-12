@@ -164,6 +164,10 @@ add_executable(Village
         src/object/raven/raven.h
         src/object/raven/wingedRaven.cpp
         src/object/raven/wingedRaven.h
+        src/object/raven/staticRaven.cpp
+        src/object/raven/staticRaven.h
+        src/object/raven/jumpingRaven.cpp
+        src/object/raven/jumpingRaven.h
 )
 target_link_libraries(Village ppgso shaders)
 install(TARGETS Village DESTINATION .)

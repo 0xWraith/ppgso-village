@@ -30,6 +30,8 @@
 #include "src/object/spiderman/spiderman.h"
 #include "src/object/raven/raven.h"
 #include "src/object/raven/wingedRaven.h"
+#include "src/object/raven/staticRaven.h"
+#include "src/object/raven/jumpingRaven.h"
 
 
 void printSceneInitProgress(int progress, int max);
@@ -283,7 +285,6 @@ void Scene::init() {
     sceneStructure->addChild(cat);
     printSceneInitProgress(++progress, maxProgress);
 
-
     std::shared_ptr<treeStruct> sand = std::make_shared<treeStruct>("sand", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/sand.bmp")),
                                                                     glm::vec3 {0.0, -0.5, 90.0}, glm::vec3 {3*ppgso::PI/2, 0, 0}, glm::vec3 {0.5, 0.1, 0.5});
     sceneStructure->addChild(sand);
@@ -502,6 +503,19 @@ void Scene::init() {
         lakeRavens->addChild(wingedRaven);
         printSceneInitProgress(++progress, maxProgress);
     }
+
+    std::shared_ptr<treeStruct> tripleRaven = std::make_shared<treeStruct>("first_raven", std::move(
+            std::make_unique<WingedRaven>()));
+    std::shared_ptr<treeStruct> raven2 = std::make_shared<treeStruct>("second_raven", std::move(
+            std::make_unique<StaticRaven>()), glm::vec3 {12,0,-10});
+    std::shared_ptr<treeStruct> raven3 = std::make_shared<treeStruct>("third_raven", std::move(
+            std::make_unique<StaticRaven>()), glm::vec3 {-12,0,-10});
+    tripleRaven->addChild(raven2);
+    tripleRaven->addChild(raven3);
+
+    lakeRavens->addChild(tripleRaven);
+    printSceneInitProgress(++progress, maxProgress);
+
 
     std::cout << "Scene init done" << std::endl;
 }
@@ -803,6 +817,12 @@ void Scene::generateWheatField(std::shared_ptr<treeStruct> fieldStruct) {
 
     std::shared_ptr<treeStruct> scarecrow = std::make_shared<treeStruct>("scarecrow", std::move(std::make_unique<Scarecrow>()), glm::vec3 {0,9,0});
     fieldStruct->addChild(scarecrow);
+
+    std::shared_ptr<treeStruct> ravenOnScarecrow1 = std::make_shared<treeStruct>("raven_on_scarecrow1", std::move(std::make_unique<JumpingRaven>()), glm::vec3 {0,0.6,0.6});
+    scarecrow->addChild(ravenOnScarecrow1);
+
+    std::shared_ptr<treeStruct> ravenOnScarecrow2 = std::make_shared<treeStruct>("raven_on_scarecrow2", std::move(std::make_unique<JumpingRaven>()), glm::vec3 {0,0.6,-0.4});
+    scarecrow->addChild(ravenOnScarecrow2);
 
     int wheats = 0;
     glm::vec3 oldpos = {0,5.8,0};

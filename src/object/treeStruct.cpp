@@ -92,14 +92,12 @@ void treeStruct::render(Scene &scene) {
     if(obj) {
         obj->render(scene);
     }
-
     if(child != NULL) {
         child->render(scene);
     }
     if(right != NULL) {
         right->render(scene);
     }
-
 }
 
 void treeStruct::addChild(std::shared_ptr<treeStruct> newStruct) {
