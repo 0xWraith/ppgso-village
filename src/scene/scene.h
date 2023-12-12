@@ -28,7 +28,9 @@ public:
     bool GLOBAL_LIGHTING_ON = true;
     glm::vec3 LIGHT_DIRECTION = {0.25 , 1, 0.5};
 
-    constexpr static const int MAX_WHEATS = 150;             //min 20
+    constexpr static const int MAX_WHEATS = 20;             //min 20
+    constexpr static const int RAVENS = 13;
+    constexpr static const int FLYING_RAVENS = 5;
 
     constexpr static const float CAMERA_SPEED = 15.0f;
     std::shared_ptr<treeStruct> sceneStructure;

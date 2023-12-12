@@ -26,6 +26,10 @@
 #include "src/object/plant/plant.h"
 #include "src/object/wheat/wheat.h"
 #include "src/object/scarecrow/scarecrow.h"
+#include "src/object/pickaxe/pickaxe.h"
+#include "src/object/spiderman/spiderman.h"
+#include "src/object/raven/raven.h"
+#include "src/object/raven/wingedRaven.h"
 
 
 void printSceneInitProgress(int progress, int max);
@@ -322,6 +326,13 @@ void Scene::init() {
     sceneStructure->addChild(bucket);
     printSceneInitProgress(++progress, maxProgress);
 
+    std::shared_ptr<treeStruct> spiderman = std::make_shared<treeStruct>("spiderman", std::move(std::make_unique<Spiderman>()),
+                                                                         glm::vec3 {-10, 4.2, 101.0},
+                                                                         glm::vec3 {0, 0, 0},
+                                                                         glm::vec3 {2, 2, 2});
+    sceneStructure->addChild(spiderman);
+    printSceneInitProgress(++progress, maxProgress);
+
     std::shared_ptr<treeStruct> waterInBucket1 = std::make_shared<treeStruct>("waterInBucket1", std::move(std::make_unique<Terrain>("models/grass.obj", "textures/water.bmp")),
                                                                               glm::vec3 {0.0, 5.0, 101.0},
                                                                               glm::vec3 {3*ppgso::PI/2, 0, 0},
@@ -435,11 +446,40 @@ void Scene::init() {
     sceneStructure->addChild(plant6);
     printSceneInitProgress(++progress, maxProgress);
 
+
+
+    std::shared_ptr<treeStruct> pickaxe = std::make_shared<treeStruct>("pickaxe", std::move(std::make_unique<Pickaxe>()));
+    sceneStructure->addChild(pickaxe);
+    printSceneInitProgress(++progress, maxProgress);
+
     std::shared_ptr<treeStruct> wheat_field = std::make_shared<treeStruct>("wheat_field", glm::vec3 {30,1,40});
     sceneStructure->addChild(wheat_field);
     generateWheatField(wheat_field);
 
     printSceneInitProgress(++progress, maxProgress);
+
+    for(int i = 0; i < RAVENS; i++) {
+        std::shared_ptr<treeStruct> raven = std::make_shared<treeStruct>("raven", std::move(std::make_unique<Raven>()));
+        wheat_field->addChild(raven);
+        printSceneInitProgress(++progress, maxProgress);
+    }
+
+
+    for(int i = 0; i < FLYING_RAVENS; i++) {
+        std::shared_ptr<treeStruct> wingedRaven = std::make_shared<treeStruct>("winged_raven", std::move(
+                std::make_unique<WingedRaven>()));
+        sceneStructure->addChild(wingedRaven);
+        printSceneInitProgress(++progress, maxProgress);
+    }
+
+    std::shared_ptr<treeStruct> lakeRavens = std::make_shared<treeStruct>("lakeRavens", glm::vec3 {0.0, 0.0, 250});
+    sceneStructure->addChild(lakeRavens);
+    for(int i = 0; i < FLYING_RAVENS; i++) {
+        std::shared_ptr<treeStruct> wingedRaven = std::make_shared<treeStruct>("winged_raven", std::move(
+                std::make_unique<WingedRaven>()));
+        lakeRavens->addChild(wingedRaven);
+        printSceneInitProgress(++progress, maxProgress);
+    }
 
     std::cout << "Scene init done" << std::endl;
 }
